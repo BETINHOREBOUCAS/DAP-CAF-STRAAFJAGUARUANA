@@ -36,7 +36,7 @@
                     <td><?= $value['proprietario']; ?></td>
                     <td><?= $value['RLegal']; ?></td>              
 
-                    <td><a href="<?= $base; ?>/declaracao/<?= $value['id']; ?>" title="Declarações"><i class="fa-solid fa-file-invoice"></i></a> <!--|
+                    <td><a href="<?= $base; ?>/declaracao/<?= $value['id']; ?>" title="Declarações" target="_blank"><i class="fa-solid fa-file-invoice"></i></a> <!--|
                     <a href="" title="Processo"><i class="fa-solid fa-download"></i></a> |
                     <a href=""><label for="upload" style="margin: 0; padding: 0;"><i class="fa-solid fa-upload"></i></label></a>
                     <input type="file" name="upload" id="upload" style="display: none;">--></td>

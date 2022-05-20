@@ -72,7 +72,7 @@ ob_start();
 
 <p>
     DECLARO sob as penas do “Art. 299 do CPB, in verbis: Omitir, em documento público ou particular, declaração que dele devia constar, ou nele inserir ou fazer inserir declaração falsa ou diversa da que devia ser escrita, com o fim de prejudicar direito, criar obrigação ou alterar a verdade sobre fato juridicamente relevante:
-    Pena - reclusão, de 1 (um) a 5 (cinco) anos, e multa, se o documento é público, e reclusão de 1 (um) a 3 (três) anos, e multa, se o documento é particular”, <strong>que para sustentação da família tenho o trabalho familiar como base na exploração do estabelecimento e que não detenho nenhuma renda fora da unidade produtiva. Declaro também que produzi e utilizei para o consumo familiar, <?= $renda['valoresCategoria']['lista'] ?> auferindo uma renda de R$ <?= number_format($renda['valoresCategoria']['valConsumo'], 2, ',', '.'); ?> durante os últimos 12 meses. Pelo que firmoa a presente declaração e termos em dou fé.</strong>
+    Pena - reclusão, de 1 (um) a 5 (cinco) anos, e multa, se o documento é público, e reclusão de 1 (um) a 3 (três) anos, e multa, se o documento é particular”, <strong>que para sustentação da família tenho o trabalho familiar como base na exploração do estabelecimento e que não detenho nenhuma renda fora da unidade produtiva. Declaro também que produzi e utilizei para o consumo familiar, <?= $renda['valoresCategoria']['lista'] ?> auferindo uma renda de R$ <?= number_format($renda['valoresCategoria']['valConsumo'], 2, ',', '.'); ?> durante os últimos 12 meses. Pelo que firmo a presente declaração e termos em dou fé.</strong>
 
 </p>
 
@@ -169,13 +169,28 @@ ob_start();
     CONTRATO PARTICULAR DE PARCERIA RURAL
 </div>
 
+<?php if (!empty($dados['cpfR'])) :?>
+
+    <p>
+    Que entre si fazem, <strong><?= mb_convert_case($dados['RLegal'], MB_CASE_TITLE); ?></strong>, brasileiro(a), <?= strtolower($dados['estado_civil_representante'] = "Casados" ? "Casado(a)" : ""); ?>, inscrito no RG sob o nº <?= $dados['rgR']; ?>, e CPF nº <?= $dados['cpfR']; ?>, residente e domiciliado em <?= mb_convert_case($dados['endereco_RLegal'], MB_CASE_TITLE); ?>, <?= mb_convert_case($dados['bairro_RLegal'], MB_CASE_TITLE); ?>, Jaguaruana-CE, doravante denominado <strong>PARCEIRO REPRESENTANTE LEGAL DO PROPRIETÁRIO</strong>, e de outro lado, <strong><?= mb_convert_case($dados['titular1'], MB_CASE_TITLE); ?></strong>, brasileiro(a), <?= strtolower($estado_civil); ?>, agricultor(a), inscrito no RG sob o nº <?= $dados['rg1']; ?>, e CPF nº <?= $dados['cpf1']; ?>, residente e domiciliado em <?= mb_convert_case($dados['endereco'], MB_CASE_TITLE) . ", " . $dados['numero']; ?>, <?= mb_convert_case($dados['bairro'], MB_CASE_TITLE); ?>, Jaguaruana-CE, doravante denominado <strong>PARCEIRO CONTRATADO</strong>, firmam o presente contrato nas seguintes condições:
+</p>
+
+<P>
+    1. O PARCEIRO REPRESENTANTE LEGAL DO PROPRIETÁRIO, legítimo proprietário de um imóvel rural localizado em, denominado em <?= mb_convert_case($dados['endereco_proprietario'], MB_CASE_TITLE); ?>, com registro do imóvel na Receita Federal / INCRA sob o nº <?= mb_convert_case($dados['registro'], MB_CASE_TITLE); ?> com área total de <?= number_format($dados['areaTotal'], 1, ",", "."); ?>Ha.
+</P>
+
+<?php else :?>
+
 <p>
     Que entre si fazem, <strong><?= mb_convert_case($dados['proprietario'], MB_CASE_TITLE); ?></strong>, brasileiro(a), <?= strtolower($dados['estado_civil_proprietario'] = "Casados" ? "Casado(a)" : ""); ?>, inscrito no RG sob o nº <?= $dados['rgP']; ?>, e CPF nº <?= $dados['cpfP']; ?>, residente e domiciliado em <?= mb_convert_case($dados['endereco_proprietario'], MB_CASE_TITLE); ?>, <?= mb_convert_case($dados['bairro_proprietario'], MB_CASE_TITLE); ?>, Jaguaruana-CE, doravante denominado <strong>PARCEIRO PROPRIETÁRIO</strong>, e de outro lado, <strong><?= mb_convert_case($dados['titular1'], MB_CASE_TITLE); ?></strong>, brasileiro(a), <?= strtolower($estado_civil); ?>, agricultor(a), inscrito no RG sob o nº <?= $dados['rg1']; ?>, e CPF nº <?= $dados['cpf1']; ?>, residente e domiciliado em <?= mb_convert_case($dados['endereco'], MB_CASE_TITLE) . ", " . $dados['numero']; ?>, <?= mb_convert_case($dados['bairro'], MB_CASE_TITLE); ?>, Jaguaruana-CE, doravante denominado <strong>PARCEIRO CONTRATADO</strong>, firmam o presente contrato nas seguintes condições:
 </p>
 
 <P>
-    1. O PARCEIRO PROPRIETÁTIO, legítimo proprietário de um imóvel rural localizado em, denominado em <?= mb_convert_case($dados['endereco_proprietario'], MB_CASE_TITLE); ?>, com registro do imóvel na Receita Federal / INCRA sob o nº <?= mb_convert_case($dados['registro'], MB_CASE_TITLE); ?> com área total de <?= number_format($dados['areaTotal'], 1, ",", "."); ?>Ha.
+    1. O PARCEIRO PROPRIETÁRIO, legítimo proprietário de um imóvel rural localizado em, denominado em <?= mb_convert_case($dados['endereco_proprietario'], MB_CASE_TITLE); ?>, com registro do imóvel na Receita Federal / INCRA sob o nº <?= mb_convert_case($dados['registro'], MB_CASE_TITLE); ?> com área total de <?= number_format($dados['areaTotal'], 1, ",", "."); ?>Ha.
 </P>
+<?php endif ?>
+
+
 
 <p>
     2. Consiste objeto do presente contrato de parceria rural a área de <?= number_format($dados['area'], 1, ",", "."); ?>0Ha, que será utilizada para lavoura em geral, cultivo de milho, pastagens, pecuária de leite, etc.
@@ -214,10 +229,18 @@ ob_start();
 
 <div class="container">
     <div class="assinatura">
+
+    <?php if(!empty($dados['cpfR'])):?>
         __________________________________________________________ <br>
         <strong>
-            PROPRIETÁRIO / REPRESENTANTE LEGAL <br><br><br><br>
+            REPRESENTANTE LEGAL <br><br><br><br>
         </strong>
+    <?php else :?>
+        __________________________________________________________ <br>
+        <strong>
+            PROPRIETÁRIO <br><br><br><br>
+        </strong>
+    <?php endif ?>
 
         __________________________________________________________ <br>
         <strong>
@@ -231,7 +254,11 @@ if ($estado_civil != "Amasiado(a)") {
     $html = ob_get_contents();
     ob_end_clean();
     $mpdf->WriteHTML($css . $html);
-    $mpdf->Output("$titular1 e $titular2.pdf", 'D');
+    if(!empty($dados['cpf2'])) {
+        $mpdf->Output("$titular1 e $titular2.pdf", 'I');
+    } else {
+        $mpdf->Output("$titular1.pdf", 'I');
+    }
 } else {
     $html = ob_get_contents();
     ob_end_clean();
@@ -289,7 +316,11 @@ if ($dados['estado_civil'] == "Amasiados") {
     $html = ob_get_contents();
     ob_end_clean();
     $mpdf->WriteHTML($css . $html);
-    $mpdf->Output("$titular1 e $titular2.pdf", 'D');
+    if(!empty($dados['cpf2'])) {
+        $mpdf->Output("$titular1 e $titular2.pdf", 'I');
+    } else {
+        $mpdf->Output("$titular1.pdf", 'I');
+    }    
 }
 
 

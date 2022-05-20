@@ -58,7 +58,7 @@
             </div>
             <div class="margin">
                 <label for="rgP">RG do Proprietário</label>
-                <input required type="text" name="rgP" id="rgP" value="<?= isset($propriedade) && !empty($propriedade) ? $propriedade[0]['rgP'] : ''; ?>">
+                <input type="text" name="rgP" id="rgP" value="<?= isset($propriedade) && !empty($propriedade) ? $propriedade[0]['rgP'] : ''; ?>">
             </div>
             <div class="margin">
                 <label for="cpfP">CPF do Proprietário</label>
@@ -66,7 +66,7 @@
             </div>
             <div class="margin">
                 <label for="estado_civil_proprietario">Estado Civil do Proprietário</label>
-                <input required type="text" name="estado_civil_proprietario" id="estado_civil_proprietario" value="<?= isset($propriedade) && !empty($propriedade) ? $propriedade[0]['estado_civil_proprietario'] : ''; ?>">
+                <input type="text" name="estado_civil_proprietario" id="estado_civil_proprietario" value="<?= isset($propriedade) && !empty($propriedade) ? $propriedade[0]['estado_civil_proprietario'] : ''; ?>">
             </div>
         </div>
         <div class="displayFlex">
@@ -93,7 +93,7 @@
                 <input type="text" name="RLegal" id="RLegal" value="<?= isset($propriedade) && !empty($propriedade) ? $propriedade[0]['RLegal'] : ''; ?>">
             </div>
             <div class="margin">
-                <label for="rgR">CPF do Representante Legal</label>
+                <label for="rgR">RG do Representante Legal</label>
                 <input type="text" name="rgR" id="rgR" value="<?= isset($propriedade) && !empty($propriedade) ? $propriedade[0]['rgR'] : ''; ?>">
             </div>
             <div class="margin">
