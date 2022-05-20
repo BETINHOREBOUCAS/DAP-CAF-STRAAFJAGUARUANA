@@ -92,12 +92,14 @@ ob_start();
             ASSINATURA 1º TITULAR <br><br>
         </strong>
         <br><br>
-        ________________________________________________ <br>
+        <?php if(!empty($dados['cpf2'])) : ?>
+________________________________________________ <br>
         <strong>
             <?= mb_convert_case($dados['titular2'], MB_CASE_UPPER); ?> <br>
             CPF <?= $dados['cpf2']; ?> <br>
             ASSINATURA 2º TITULAR
         </strong>
+        <?php endif ?>
     </div>
 </div>
 
@@ -138,12 +140,14 @@ $mpdf->AddPage();
             ASSINATURA 1º TITULAR <br><br>
         </strong>
         <br><br>
-        ________________________________________________ <br>
+        <?php if(!empty($dados['cpf2'])) : ?>
+________________________________________________ <br>
         <strong>
             <?= mb_convert_case($dados['titular2'], MB_CASE_UPPER); ?> <br>
             CPF <?= $dados['cpf2']; ?> <br>
             ASSINATURA 2º TITULAR
         </strong>
+        <?php endif ?>
     </div>
 </div>
 
@@ -270,12 +274,14 @@ if ($estado_civil == "Amasiado(a)") {
             ASSINATURA 1º TITULAR <br><br>
         </strong>
         <br><br>
-        ________________________________________________ <br>
+        <?php if(!empty($dados['cpf2'])) : ?>
+________________________________________________ <br>
         <strong>
             <?= mb_convert_case($dados['titular2'], MB_CASE_UPPER); ?> <br>
             CPF <?= $dados['cpf2']; ?> <br>
             ASSINATURA 2º TITULAR
         </strong>
+        <?php endif ?>
     </div>
 </div>
 <?php
