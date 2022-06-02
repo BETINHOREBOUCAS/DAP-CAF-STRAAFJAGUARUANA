@@ -43,6 +43,12 @@
             <th>Nascimento</th>
             <td><?= $titulares[0]['dn2']; ?></td>
         </tr>
+        <tr>
+            <th>Mãe</th>
+            <td><?= $titulares[0]['mae1']; ?></td>
+            <th>Mãe</th>
+            <td><?= $titulares[0]['mae2']; ?></td>
+        </tr>
 
     </table>
 

@@ -32,4 +32,18 @@ class Declaracao extends Model
         }
     }
 
+    public static function buscarSeparado($idDocumento) {
+        $pdo = Conection::sqlSelect();
+
+        $sql = "SELECT * FROM separados WHERE id_documento = $idDocumento";
+        $result = $pdo->query($sql);
+        $sql = $result->fetchAll(PDO::FETCH_ASSOC);
+
+        if ($result->rowCount()>0) {
+            return $sql;
+        } else {
+            return false;
+        }
+    }
+
 }

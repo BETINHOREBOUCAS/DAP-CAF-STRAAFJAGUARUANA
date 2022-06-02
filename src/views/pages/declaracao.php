@@ -16,8 +16,6 @@ if ($dados['estado_civil'] == "Casados") {
     $estado_civil = $dados['estado_civil'];
 }
 
-/*echo "<pre>";
-    print_r($renda);*/
 ?>
 
 <?php
@@ -68,7 +66,7 @@ ob_start();
     Declaração
 </div>
 
-<p>Eu, <strong><?= mb_convert_case($dados['titular1'], MB_CASE_TITLE); ?></strong>, brasileiro(a), agricultor(a), <?= strtolower ($estado_civil); ?>, portador(a) do RG <?= $dados['rg1']; ?>, CPF <?= $dados['cpf2']; ?>, residente e domiciliado em <?= mb_convert_case($dados['endereco'], MB_CASE_TITLE) . ", " . $dados['numero']; ?>, <?= mb_convert_case($dados['bairro'], MB_CASE_TITLE); ?>, Jaguaruana-CE.</p>
+<p>Eu, <strong><?= mb_convert_case($dados['titular1'], MB_CASE_TITLE); ?></strong>, brasileiro(a), agricultor(a), <?= strtolower ($estado_civil); ?>, portador(a) do RG <?= $dados['rg1']; ?>, CPF <?= $dados['cpf1']; ?>, residente e domiciliado em <?= mb_convert_case($dados['endereco'], MB_CASE_TITLE) . ", " . $dados['numero']; ?>, <?= mb_convert_case($dados['bairro'], MB_CASE_TITLE); ?>, Jaguaruana-CE.</p>
 
 <p>
     DECLARO sob as penas do “Art. 299 do CPB, in verbis: Omitir, em documento público ou particular, declaração que dele devia constar, ou nele inserir ou fazer inserir declaração falsa ou diversa da que devia ser escrita, com o fim de prejudicar direito, criar obrigação ou alterar a verdade sobre fato juridicamente relevante:

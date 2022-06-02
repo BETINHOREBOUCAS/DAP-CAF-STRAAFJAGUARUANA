@@ -17,8 +17,6 @@ class ArquivoController extends Controller
         $info['socios'] = Socios::find('', '', $idSocio);
 
         $info['titulares'] = Socios::findGeneral('documentos', $idSocio);
-        //$info['renda'] = Socios::findGeneral('doc_renda', $idSocio);
-        //$info['categoria'] = Acessor::somar($info['renda']);
 
         $this->render('arquivo', $info);
     }

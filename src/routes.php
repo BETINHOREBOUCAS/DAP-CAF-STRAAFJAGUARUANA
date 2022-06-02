@@ -22,3 +22,5 @@ $router->get('/arquivo/emissao/{idsocio}', 'ArquivoController@emissao');
 $router->post('/arquivo/emissao/{idsocio}', 'ArquivoController@emissaoAction');
 
 $router->get('/declaracao/{iddeclaracao}', 'DeclaracaoController@index');
+$router->get('/declaracao/separacao/{iddeclaracao}', 'DeclaracaoController@declaracaoSeparado');
+$router->post('/declaracao/separacao/{iddeclaracao}', 'DeclaracaoController@declaracaoSeparadoAction');
