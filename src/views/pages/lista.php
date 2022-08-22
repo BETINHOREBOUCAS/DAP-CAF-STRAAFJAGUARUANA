@@ -20,12 +20,12 @@ echo "</pre>";*/
 
         <div class="margin">
             <label for="Nome">Nome</label><br>
-            <input type="text" name="nome" id="nome">
+            <input type="text" autocomplete="off" name="nome" id="nome">
         </div>
 
         <div class="margin">
             <label for="cpf">CPF</label><br>
-            <input type="text" name="cpf" id="cpf">
+            <input type="text" autocomplete="off" name="cpf" id="cpf">
         </div>
     </div>
     <div><input type="submit" value="Pesquisar"></div>

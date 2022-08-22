@@ -35,12 +35,12 @@
 
             <div class="margin">
                 <label for="tel1">Celular 1</label><br>
-                <input type="text" name="tel1" id="tel1" required value="<?= ($socios[0]['tel1']) ?? '' ?>"><br><br>
+                <input type="text" autocomplete="random-string" name="tel1" id="tel1" required value="<?= ($socios[0]['tel1']) ?? '' ?>"><br><br>
             </div>
 
             <div class="margin">
                 <label for="tel2">Celular 2</label><br>
-                <input type="text" name="tel2" id="tel2" value="<?= ($socios[0]['tel2']) ?? '' ?>"><br><br>
+                <input type="text" autocomplete="random-string" name="tel2" id="tel2" value="<?= ($socios[0]['tel2']) ?? '' ?>"><br><br>
             </div>
         </div>
 
@@ -48,17 +48,17 @@
 
             <div class="margin">
                 <label for="endereco">Endereço</label><br>
-                <input type="text" name="endereco" id="endereco" required value="<?= ($socios[0]['endereco']) ?? '' ?>"><br><br>
+                <input type="text" autocomplete="random-string" name="endereco" id="endereco" required value="<?= ($socios[0]['endereco']) ?? '' ?>"><br><br>
             </div>
 
             <div class="margin">
                 <label for="numero">Nº</label><br>
-                <input type="text" name="numero" id="numero" required value="<?= ($socios[0]['numero']) ?? '' ?>"><br><br>
+                <input type="text" autocomplete="random-string" name="numero" id="numero" required value="<?= ($socios[0]['numero']) ?? '' ?>"><br><br>
             </div>
 
             <div class="margin">
                 <label for="bairro">Bairro</label><br>
-                <input type="text" name="bairro" id="bairro" required value="<?= ($socios[0]['bairro']) ?? '' ?>"><br><br>
+                <input type="text" autocomplete="random-string" name="bairro" id="bairro" required value="<?= ($socios[0]['bairro']) ?? '' ?>"><br><br>
             </div>
         </div>
     </fieldset>
@@ -72,17 +72,17 @@
         <div class="displayFlex">
             <div class="margin">
                 <label for="titular1">Nome Completo</label> <br>
-                <input type="text" name="titular1" id="titular1" required value="<?= ($socios[0]['titular1']) ?? '' ?>"> <br><br>
+                <input type="text" autocomplete="random-string" name="titular1" id="titular1" required value="<?= ($socios[0]['titular1']) ?? '' ?>"> <br><br>
             </div>
 
             <div class="margin">
                 <label for="rg1">RG</label><br>
-                <input type="text" name="rg1" id="rg1" required value="<?= ($socios[0]['rg1']) ?? '' ?>"><br><br>
+                <input type="text" autocomplete="random-string" name="rg1" id="rg1" required value="<?= ($socios[0]['rg1']) ?? '' ?>"><br><br>
             </div>
 
             <div class="margin">
                 <label for="cpf1">CPF</label><br>
-                <input type="text" name="cpf1" id="cpf1" required value="<?= ($socios[0]['cpf1']) ?? '' ?>"><br><br>
+                <input type="text" autocomplete="random-string" name="cpf1" id="cpf1" required value="<?= ($socios[0]['cpf1']) ?? '' ?>"><br><br>
             </div>
 
             <div class="margin">
@@ -95,7 +95,7 @@
 
             <div class="margin">
                 <label for="mae1">Nome da Mãe</label><br>
-                <input type="text" name="mae1" id="mae1" required value="<?= ($socios[0]['mae1']) ?? '' ?>"><br><br>
+                <input type="text" autocomplete="random-string" name="mae1" id="mae1" required value="<?= ($socios[0]['mae1']) ?? '' ?>"><br><br>
             </div>
 
             <div class="margin">
@@ -133,17 +133,17 @@
         <div class="displayFlex">
             <div class="margin">
                 <label for="titular2">Nome Completo</label> <br>
-                <input type="text" name="titular2" id="titular2" value="<?= ($socios[0]['titular2']) ?? '' ?>"> <br><br>
+                <input type="text" autocomplete="random-string" name="titular2" id="titular2" value="<?= ($socios[0]['titular2']) ?? '' ?>"> <br><br>
             </div>
 
             <div class="margin">
                 <label for="rg2">RG</label><br>
-                <input type="text" name="rg2" id="rg2" value="<?= ($socios[0]['rg2']) ?? '' ?>"><br><br>
+                <input type="text" autocomplete="random-string" name="rg2" id="rg2" value="<?= ($socios[0]['rg2']) ?? '' ?>"><br><br>
             </div>
 
             <div class="margin">
                 <label for="cpf2">CPF</label><br>
-                <input type="text" name="cpf2" id="cpf2" value="<?= ($socios[0]['cpf2']) ?? '' ?>"><br><br>
+                <input type="text" autocomplete="random-string" name="cpf2" id="cpf2" value="<?= ($socios[0]['cpf2']) ?? '' ?>"><br><br>
             </div>
 
             <div class="margin">
@@ -156,7 +156,7 @@
 
             <div class="margin">
                 <label for="mae2">Nome da Mãe</label><br>
-                <input type="text" name="mae2" id="mae2" value="<?= ($socios[0]['mae2']) ?? '' ?>"><br><br>
+                <input type="text" autocomplete="random-string" name="mae2" id="mae2" value="<?= ($socios[0]['mae2']) ?? '' ?>"><br><br>
             </div>
 
             <div class="margin">

@@ -25,7 +25,7 @@
         </div>
         <div class="margin">
             <label for="valor">Valor R$</label>
-            <input type="text" name="valor" id="valor" required>
+            <input type="text" autocomplete="off" name="valor" id="valor" required>
         </div>
     </div>
 

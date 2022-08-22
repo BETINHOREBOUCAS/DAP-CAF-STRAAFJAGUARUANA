@@ -49,6 +49,12 @@
             <th>Mãe</th>
             <td><?= $titulares[0]['mae2']; ?></td>
         </tr>
+        <tr>
+            <th>Membros Que Reside na Propriedade</th>
+            <td><?= $titulares[0]['Mreside']; ?></td>
+            <th>Membros que Ajuda na Propriedade</th>
+            <td><?= $titulares[0]['Majuda']; ?></td>
+        </tr>
 
     </table>
 
