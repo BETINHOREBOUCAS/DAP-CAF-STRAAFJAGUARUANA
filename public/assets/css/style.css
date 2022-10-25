@@ -1,3 +1,7 @@
+.width-25 {
+  width: 25%;
+}
+
 .displayFlex {
     display: flex;
 }
@@ -5,6 +9,10 @@
 .margin {
     margin: 3px;
     width: 100%;
+}
+
+label {
+  cursor: pointer;
 }
 
 input[type=text], input[type=date], input[type=number], select {
@@ -40,7 +48,6 @@ input[type=text], input[type=date], input[type=number], select {
   
   td, th {
     border: 1px solid #dddddd;
-    text-align: center;
     padding: 8px;
   }
   
@@ -87,15 +94,55 @@ input[type=text], input[type=date], input[type=number], select {
     font-size: 13px;
   }
 
-  .enquadrar td, th {
+  .centro {
+    font-size: 13px;
+  }
+
+  .enquadrar td, .enquadrar th {
     border: 1px solid #dddddd;
-    text-align: center;
-    padding: 1px;
+    text-align: left;
+    padding: 2px;
+    padding-left: 10px;
+  }
+
+  .centro td, .centro th {
+    text-align: center; 
+    padding: 2px;
+    border: 1px solid #dddddd;
+    font-size: 13px;
+    margin-left: 5px;
   }
 
   .titleTable {
-    text-align: center;
+    text-align: center; 
     font-size: 15px;
     font-weight: bold;
     color: blue;
+  }
+
+  .assinatura {
+    text-align: center;
+    display: none;
+  }
+
+  @media only print {
+    h2 {
+      text-align: center;
+    }
+
+    a {
+      display: none;
+    }
+
+    form {
+      display: none;
+    }
+
+    .assinatura {
+      display: block;
+    }
+
+    .width-25 {
+      width: 30%;
+    }
   }

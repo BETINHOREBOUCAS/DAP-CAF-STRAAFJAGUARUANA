@@ -18,7 +18,7 @@ ob_start();
         border: 1px solid black;
         font-size: 40px;
         font-weight: bolder;
-        text-align: center;
+        text-align: center; 
     }
 
     .container {
@@ -28,7 +28,7 @@ ob_start();
     }
 
     .assinatura {
-        text-align: center;
+        text-align: center; 
     }
 
     p {

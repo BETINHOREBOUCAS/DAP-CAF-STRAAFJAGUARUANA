@@ -34,21 +34,27 @@
                     <td><?= $value['data_inclusao']; ?></td>
                     <td><?= $value['propriedade']; ?></td>
                     <td><?= $value['proprietario']; ?></td>
-                    <td><?= $value['RLegal']; ?></td>              
+                    <td><?= $value['RLegal']; ?></td>
 
                     <td>
-                        <a href="<?= $base; ?>/declaracao/<?= $value['id']; ?>" title="Declarações" target="_blank"><i class="fa-solid fa-file-invoice"></i></a>
-                        <?php if ($titulares[$key]['estado_civil'] == "Separado(a)") :?> |
-                        <a href="<?= $base; ?>/declaracao/separacao/<?= $value['id']; ?>" title="Declaração de Separado" style="color: #F44A6C" target="_blank"><i class="fa-solid fa-heart-crack"></i></a>
+                        <label><a href="<?= $base; ?>/declaracao/<?= $value['id']; ?>" title="Declarações" target="_blank"><i class="fa-solid fa-file-invoice"></i></a></label>
+
+                        <?php if ($titulares[$key]['estado_civil'] == "Separado(a)") : ?> |
+                            <label>
+                                <a href="<?= $base; ?>/declaracao/separacao/<?= $value['id']; ?>" title="Declaração de Separado" style="color: #F44A6C" target="_blank"><i class="fa-solid fa-heart-crack"></i></a>
+                            </label>
                         <?php endif ?>
+
+                        | <!-- Fazer funcionar o upload dos documentos -->
+                        <label for="documentos" title="Enviar Documentos de Indentificação" style="color: #ff574d;"><i class="fa-solid fa-id-card"></i></label>
+                        <input type="file" name="documentos" id="documentos" style="display: none;">
+                        |
+                        <label for="processo" title="Enviar Processo" style="color: #ff574d;"><i class="fa-solid fa-cloud-arrow-up"></i></label>
+                        <input type="file" name="documentos" id="documentos" style="display: none;">
+
                     </td>
-                    <!--|
-                    <a href="" title="Processo"><i class="fa-solid fa-download"></i></a> |
-                    <a href=""><label for="upload" style="margin: 0; padding: 0;"><i class="fa-solid fa-upload"></i></label></a>
-                    <input type="file" name="upload" id="upload" style="display: none;">-->
-                </td>
                 </tr>
-                <?php endforeach ?>
+            <?php endforeach ?>
 
         </table>
     <?php endif ?>

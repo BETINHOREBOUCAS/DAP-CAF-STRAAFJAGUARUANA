@@ -4,58 +4,79 @@
 
 <a href="<?= $base; ?>/arquivo/<?= $idsocio; ?>" style="font-size: 40px; padding: 20px;" title="Voltar"><i class="fa-solid fa-arrow-left"></i></a>
 
-<!--
-<pre>
-    <?php
-    print_r($viewData);
-    ?>
-</pre>
--->
 <div>
-    <div class="titleTable">Titulares</div>
+    <div class="titleTable">Titular 1</div>
     <table class="enquadrar">
         <!-- Dados Titular 1 -->
         <tr>
-            <th colspan="2">Estado Civil</th>
-            <td colspan="2"><?= $titulares[0]['estado_civil']; ?></td>
+            <th class="width-25">Titular 1</th>
+            <td><?= $titulares[0]['titular1']; ?></td>
         </tr>
         <tr>
-            <th style="width: 25%;">Titula 1</th>
-            <td style="width: 25%;"><?= $titulares[0]['titular1']; ?></td>
-            <th style="width: 25%;">Titula 2</th>
-            <td style="width: 25%;"><?= $titulares[0]['titular2']; ?></td>
-        </tr>
-        <tr>
-            <th>CPF</th>
+            <th class="width-25">CPF</th>
             <td><?= $titulares[0]['cpf1']; ?></td>
-            <th>CPF</th>
-            <td><?= $titulares[0]['cpf2']; ?></td>
         </tr>
         <tr>
-            <th>RG</th>
+            <th class="width-25">RG</th>
             <td><?= $titulares[0]['rg1']; ?></td>
-            <th>RG</th>
-            <td><?= $titulares[0]['rg2']; ?></td>
         </tr>
         <tr>
-            <th>Nascimento</th>
+            <th class="width-25">Nascimento</th>
             <td><?= $titulares[0]['dn1']; ?></td>
-            <th>Nascimento</th>
-            <td><?= $titulares[0]['dn2']; ?></td>
         </tr>
         <tr>
-            <th>Mãe</th>
+            <th class="width-25">Mãe</th>
             <td><?= $titulares[0]['mae1']; ?></td>
-            <th>Mãe</th>
-            <td><?= $titulares[0]['mae2']; ?></td>
-        </tr>
-        <tr>
-            <th>Membros Que Reside na Propriedade</th>
-            <td><?= $titulares[0]['Mreside']; ?></td>
-            <th>Membros que Ajuda na Propriedade</th>
-            <td><?= $titulares[0]['Majuda']; ?></td>
         </tr>
 
+    </table>
+
+    <?php if (!empty($titulares[0]['titular2'])) : ?>
+
+        <br>
+
+        <div class="titleTable">Titular 2</div>
+        <table class="enquadrar">
+            <tr>
+                <th style="width: 25%;">Nome Completo: </th>
+                <td><?= $titulares[0]['titular2']; ?></td>
+            </tr>
+            <tr>
+                <th class="width-25">CPF:</th>
+                <td><?= $titulares[0]['cpf2']; ?></td>
+            </tr>
+            <tr>
+                <th class="width-25">RG:</th>
+                <td><?= $titulares[0]['rg2']; ?></td>
+            </tr>
+            <tr>
+                <th class="width-25">Nascimento</th>
+                <td><?= $titulares[0]['dn2']; ?></td>
+            </tr>
+            <tr>
+                <th class="width-25">Mãe</th>
+                <td><?= $titulares[0]['mae2']; ?></td>
+            </tr>
+        </table>
+
+    <?php endif ?>
+
+    <br>
+
+    <div class="titleTable">Informações Gerais</div>
+    <table class="enquadrar">
+        <tr>
+            <th colspan="2" class="width-25">Estado Civil</th>
+            <td colspan="2">Casados</td>
+        </tr>
+        <tr>
+            <th colspan="2" class="width-25">Membros Que Reside na Propriedade</th>
+            <td colspan="2"><?= $titulares[0]['Mreside']; ?></td>
+        </tr>
+        <tr>
+            <th colspan="2" class="width-25">Membros que Ajuda na Propriedade</th>
+            <td colspan="2"><?= $titulares[0]['Majuda']; ?></td>
+        </tr>
     </table>
 
     <br>
@@ -64,17 +85,17 @@
     <table class="enquadrar">
         <!-- Dados Endereço -->
         <tr>
-            <th style="width: 50%;">Endereço</th>
-            <td style="width: 50%;"><?= $titulares[0]['endereco']; ?></td>
+            <th class="width-25">Endereço</th>
+            <td><?= $titulares[0]['endereco']; ?></td>
         </tr>
 
         <tr>
-            <th>Numero</th>
+            <th class="width-25">Numero</th>
             <td><?= $titulares[0]['numero']; ?></td>
         </tr>
 
         <tr>
-            <th>Bairro</th>
+            <th class="width-25">Bairro</th>
             <td><?= $titulares[0]['bairro']; ?></td>
         </tr>
 
@@ -82,56 +103,21 @@
 
     <br>
 
-    <div class="titleTable">Propriedade</div>
-    <?php if (isset($propriedade) && !empty($propriedade)) : ?>
-        <table class="enquadrar">
-            <!-- Dados Titular 1 -->
-            <tr>
-                <th colspan="2">Nome da Propriedade</th>
-                <td colspan="2"><?= $propriedade[0]['propriedade']; ?></td>
-
-            </tr>
-            <tr>
-                <th colspan="2">Denominação do Imóvel</th>
-                <td colspan="2"><?= $propriedade[0]['denominacao']; ?></td>
-            </tr>
-            <tr>
-                <th colspan="2">Área PLantada</th>
-                <td colspan="2"><?= $propriedade[0]['area']; ?>ha</td>
-            </tr>
-            <tr>
-                <th>Nome Proprietário</th>
-                <td><?= $propriedade[0]['proprietario']; ?></td>
-                <th>CPF</th>
-                <td><?= $propriedade[0]['cpfP']; ?></td>
-            </tr>
-            <tr>
-                <th>Nome Representante Legal</th>
-                <td><?= $propriedade[0]['RLegal']; ?></td>
-                <th>CPF</th>
-                <td><?= $propriedade[0]['cpfR']; ?></td>
-            </tr>
-        </table>
-    <?php endif ?>
-    <br>
-
     <div class="titleTable">Renda</div>
 
     <?php if (isset($renda) && !empty($renda)) : ?>
         <div>
-            <table class="enquadrar">
+            <table class="centro">
                 <tr>
                     <th>Data Inclusão</th>
                     <th>Categoria</th>
                     <th>Valor</th>
-
                 </tr>
                 <?php foreach ($renda as $value) : ?>
                     <tr>
                         <td><?= $value['data_inclusao']; ?></td>
                         <td><?= $value['categoria']; ?></td>
                         <td>R$ <?= number_format($value['valor'], 2, ',', '.'); ?></td>
-
                     </tr>
                 <?php endforeach ?>
 
@@ -139,7 +125,7 @@
 
             <br>
 
-            <table class="enquadrar">
+            <table class="centro">
                 <tr>
                     <th>Renda Rural</th>
                     <th>R$ <?= number_format($valoresCategoria['valRural'], 2, ',', '.'); ?></th>
@@ -156,9 +142,47 @@
             </table>
         </div>
     <?php endif ?>
-</div>
 
-<br>
+    <br>
+
+    <div class="titleTable">Propriedade</div>
+    <?php if (isset($propriedade) && !empty($propriedade)) : ?>
+        <table class="enquadrar">
+            <!-- Dados Titular 1 -->
+            <tr>
+                <th colspan="2" class="width-25">Nome da Propriedade</th>
+                <td colspan="2"><?= $propriedade[0]['propriedade']; ?></td>
+            </tr>
+            <tr>
+                <th colspan="2" class="width-25">Denominação do Imóvel</th>
+                <td colspan="2"><?= $propriedade[0]['denominacao']; ?></td>
+            </tr>
+            <tr>
+                <th colspan="2" class="width-25">Área PLantada</th>
+                <td colspan="2"><?= $propriedade[0]['area']; ?>ha</td>
+            </tr>
+            <tr>
+                <th colspan="2" class="width-25">Nome Proprietário</th>
+                <td colspan="2"><?= $propriedade[0]['proprietario']; ?></td>
+            </tr>
+            <tr>
+                <th colspan="2" class="width-25">CPF do Proprietário</th>
+                <td colspan="2"><?= $propriedade[0]['cpfP']; ?></td>
+            </tr>
+            <tr>
+                <th colspan="2" class="width-25">Nome Representante Legal</th>
+                <td colspan="2"><?= $propriedade[0]['RLegal']; ?></td>
+            </tr>
+            <tr>
+                <th colspan="2">CPF do Representante Legal</th>
+                <td colspan="2"><?= $propriedade[0]['cpfR']; ?></td>
+            </tr>
+        </table>
+    <?php endif ?>
+
+    <br>
+
+</div>
 
 <div>
     <?php if (isset($renda) && !empty($renda) && isset($propriedade) && !empty($propriedade)) : ?>
@@ -166,6 +190,11 @@
             <input type="submit" value="Confirmar Informações">
         </form>
     <?php endif ?>
+</div>
+
+<div class="assinatura">
+    _______________________________________________________ <br>
+    Assinatura Declarante
 </div>
 
 </body>
