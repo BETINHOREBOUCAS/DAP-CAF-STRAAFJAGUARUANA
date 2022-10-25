@@ -7,7 +7,7 @@
 <div>
     <div class="titleTable">Titular 1</div>
     <table class="enquadrar">
-        <!-- Dados Titular 1 -->
+        <!-- Dados Titular 1! -->
         <tr>
             <th class="width-25">Titular 1</th>
             <td><?= $titulares[0]['titular1']; ?></td>
