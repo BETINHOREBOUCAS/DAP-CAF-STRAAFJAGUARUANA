@@ -82,7 +82,7 @@
 
             <div class="margin">
                 <label for="cpf1">CPF</label><br>
-                <input type="text" autocomplete="random-string" name="cpf1" id="cpf1" required value="<?= ($socios[0]['cpf1']) ?? '' ?>"><br><br>
+                <input type="text" autocomplete="random-string" name="cpf1" id="inputCPF2" placeholder="___.___.___-___" required value="<?= ($socios[0]['cpf1']) ?? '' ?>"><br><br>
             </div>
 
             <div class="margin">
@@ -143,7 +143,7 @@
 
             <div class="margin">
                 <label for="cpf2">CPF</label><br>
-                <input type="text" autocomplete="random-string" name="cpf2" id="cpf2" value="<?= ($socios[0]['cpf2']) ?? '' ?>"><br><br>
+                <input type="text" autocomplete="random-string" name="cpf2" id="inputCPF3" placeholder="___.___.___-___" value="<?= ($socios[0]['cpf2']) ?? '' ?>"><br><br>
             </div>
 
             <div class="margin">
@@ -196,7 +196,7 @@
 
 
 
-
+<script src="<?=$base;?>/assets/js/script2.js"></script>
 
 </body>
 

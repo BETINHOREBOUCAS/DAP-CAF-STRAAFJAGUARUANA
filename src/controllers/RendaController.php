@@ -30,6 +30,7 @@ class RendaController extends Controller
         $dados['id_socio'] = $idSocio;
         $dados['valor'] = filter_var($_POST['valor'], FILTER_DEFAULT);
         $dados['categoria'] = filter_var($_POST['categoria'], FILTER_DEFAULT);
+        $dados['membro'] = filter_var($_POST['membro'], FILTER_DEFAULT);
 
         $dados['valor'] = floatval(str_replace(',', '.', $dados['valor']));
         

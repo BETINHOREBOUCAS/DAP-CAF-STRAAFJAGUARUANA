@@ -19,7 +19,7 @@
 
 <div>
     <?php if (isset($titulares) && !empty($titulares)) : ?>
-        <table>
+        <table class="centro">
             <tr>
                 <th>Data de Inclusão</th>
                 <th>Nomo do Imóvel</th>
@@ -46,12 +46,13 @@
                         <?php endif ?>
 
                         | <!-- Fazer funcionar o upload dos documentos -->
+                        <!--
                         <label for="documentos" title="Enviar Documentos de Indentificação" style="color: #ff574d;"><i class="fa-solid fa-id-card"></i></label>
                         <input type="file" name="documentos" id="documentos" style="display: none;">
                         |
                         <label for="processo" title="Enviar Processo" style="color: #ff574d;"><i class="fa-solid fa-cloud-arrow-up"></i></label>
                         <input type="file" name="documentos" id="documentos" style="display: none;">
-
+                        -->
                     </td>
                 </tr>
             <?php endforeach ?>

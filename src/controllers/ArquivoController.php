@@ -67,6 +67,7 @@ class ArquivoController extends Controller
         foreach ($dados['renda'] as $key => $value) {
             $dados['renda'][$key]['id_documento'] = $idDocumento;
         }
+        
         Socios::addRendaAction('doc_renda', $dados['renda']);
         
         $this->redirect('/arquivo/'.$idSocio);

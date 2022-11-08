@@ -62,7 +62,7 @@
             </div>
             <div class="margin">
                 <label for="cpfP">CPF do Proprietário</label>
-                <input required type="text" autocomplete="random-string" name="cpfP" id="cpfP" maxlength="14" value="<?= isset($propriedade) && !empty($propriedade) ? $propriedade[0]['cpfP'] : ''; ?>">
+                <input required type="text" autocomplete="random-string" name="cpfP" id="inputCPF2" placeholder="___.___.___-___" maxlength="14" value="<?= isset($propriedade) && !empty($propriedade) ? $propriedade[0]['cpfP'] : ''; ?>">
             </div>
             <div class="margin">
                 <label for="estado_civil_proprietario">Estado Civil do Proprietário</label>
@@ -98,7 +98,7 @@
             </div>
             <div class="margin">
                 <label for="cpfR">CPF do Representante Legal</label>
-                <input type="text" autocomplete="random-string" name="cpfR" id="cpfR" maxlength="14" value="<?= isset($propriedade) && !empty($propriedade) ? $propriedade[0]['cpfR'] : ''; ?>">
+                <input type="text" autocomplete="random-string" name="cpfR" id="inputCPF3" placeholder="___.___.___-___" maxlength="14" value="<?= isset($propriedade) && !empty($propriedade) ? $propriedade[0]['cpfR'] : ''; ?>">
             </div>
             <div class="margin">
                 <label for="estado_civil_representante">Estado Civil do Representante Legal</label>
@@ -121,6 +121,7 @@
     <div><input type="submit" value="Salvar"></div>
 </form>
 
+<script src="<?=$base;?>/assets/js/script2.js"></script>
 </body>
 
 </html>

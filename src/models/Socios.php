@@ -127,16 +127,15 @@ class Socios extends Model
         $data->setTimezone(new DateTimeZone('America/Fortaleza'));
         $dataInclusao = $data->format('d/m/Y H:i:s');
         foreach ($renda as $key => $rendaIndividual) {
-            echo "<pre>";
-            print_r($rendaIndividual);
 
             $rendaIndividual['id'];
             $categoria = $rendaIndividual['categoria'];
+            $membro = $rendaIndividual['membro'];
             $valor = $rendaIndividual['valor'];
             $idSocioResponsavel = $rendaIndividual['id_socio'];
             $idDocumento = $rendaIndividual['id_documento'];
             
-            echo $sql = "INSERT INTO $table (categoria, valor, data_inclusao, id_documento, id_socio_responsavel) VALUES ('$categoria', $valor, '$dataInclusao', $idDocumento, $idSocioResponsavel)";
+            echo $sql = "INSERT INTO $table (membro, categoria, valor, data_inclusao, id_documento, id_socio_responsavel) VALUES ('$membro', '$categoria', $valor, '$dataInclusao', $idDocumento, $idSocioResponsavel)";
             $pdo->query($sql);           
             
         }

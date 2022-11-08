@@ -1,6 +1,6 @@
 <?php $render('header'); ?>
 
-<h2>Informações Para Emissão de DAP</h2>
+<h2>Informações Para Emissão do CAF</h2>
 
 <a href="<?= $base; ?>/arquivo/<?= $idsocio; ?>" style="font-size: 40px; padding: 20px;" title="Voltar"><i class="fa-solid fa-arrow-left"></i></a>
 
@@ -23,6 +23,10 @@
         <tr>
             <th class="width-25">Nascimento</th>
             <td><?= $titulares[0]['dn1']; ?></td>
+        </tr>
+        <tr>
+            <th class="width-25">Escolaridade</th>
+            <td><?= $titulares[0]['escolaridade1']; ?></td>
         </tr>
         <tr>
             <th class="width-25">Mãe</th>
@@ -54,6 +58,10 @@
                 <td><?= $titulares[0]['dn2']; ?></td>
             </tr>
             <tr>
+                <th class="width-25">Escolaridade</th>
+                <td><?= $titulares[0]['escolaridade2']; ?></td>
+            </tr>
+            <tr>
                 <th class="width-25">Mãe</th>
                 <td><?= $titulares[0]['mae2']; ?></td>
             </tr>
@@ -67,7 +75,7 @@
     <table class="enquadrar">
         <tr>
             <th colspan="2" class="width-25">Estado Civil</th>
-            <td colspan="2">Casados</td>
+            <td colspan="2"><?= $titulares[0]['estado_civil']; ?></td>
         </tr>
         <tr>
             <th colspan="2" class="width-25">Membros Que Reside na Propriedade</th>
@@ -133,6 +141,10 @@
                 <tr>
                     <th>Renda Urbana</th>
                     <th>R$ <?= number_format($valoresCategoria['valUrbano'], 2, ',', '.'); ?></th>
+                </tr>
+                <tr>
+                    <th>Programas Sociais</th>
+                    <th>R$ <?= number_format($valoresCategoria['valProgramasSociais'], 2, ',', '.'); ?></th>
                 </tr>
                 <tr>
                     <th>% Rural</th>

@@ -87,7 +87,7 @@ input[type=text], input[type=date], input[type=number], select {
   }
 
   .acoes {
-    font-size: 18px;
+    font-size: 15px;
   }
 
   .enquadrar {
@@ -109,7 +109,6 @@ input[type=text], input[type=date], input[type=number], select {
     text-align: center; 
     padding: 2px;
     border: 1px solid #dddddd;
-    font-size: 13px;
     margin-left: 5px;
   }
 

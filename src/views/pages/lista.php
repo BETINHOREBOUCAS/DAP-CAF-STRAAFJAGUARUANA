@@ -25,7 +25,7 @@ echo "</pre>";*/
 
         <div class="margin">
             <label for="cpf">CPF</label><br>
-            <input type="text" autocomplete="off" name="cpf" id="cpf">
+            <input type="text" autocomplete="off" name="cpf" id="inputCPF" placeholder="___.___.___-___">
         </div>
     </div>
     <div><input type="submit" value="Pesquisar"></div>
@@ -33,13 +33,13 @@ echo "</pre>";*/
 
 <div>
 <?php if (isset($socios) && !empty($socios)) : ?>
-    <table>
+    <table class="centro">
         <tr>
             <th>Titular 1</th>
             <th>CPF</th>
             <th>Titular 2</th>
             <th>CPF</th>
-            <th>Açôes</th>
+            <th>Ações</th>
         </tr>
         
             <?php foreach ($socios as $key => $value) : ?>
@@ -62,4 +62,5 @@ echo "</pre>";*/
 </div>
 </body>
 
+<script src="<?=$base;?>/assets/js/script.js"></script>
 </html>

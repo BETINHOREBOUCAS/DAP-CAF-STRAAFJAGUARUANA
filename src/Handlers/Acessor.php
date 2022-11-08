@@ -12,13 +12,12 @@ class Acessor
             $dados['renda'] = $result;
             $contador = 0;
             $contador2 = 1;
-            $lista = "";
+            $lista = array();
             $valRural = 0;
             $valUrbana = 0;
             $valConsumo = 0;
+            $valProgramasSociais = 0;
             $valTotal = 0;
-            /*echo "<pre>";
-            print_r($dados);*/
 
             //Cria um contador para controle de virgula na lista
             foreach ($dados['renda'] as $key => $value) {
@@ -31,25 +30,32 @@ class Acessor
 
             foreach ($dados['renda'] as $value) {
                 $valTotal += $value['valor'];
-                if ($value['categoria'] == "Emprego Urbano") {
+                if ($value['categoria'] == "Emprego Urbano" || $value['categoria'] == "Aposentadoria Urbana") {
                     $valUrbana += $value['valor'];
-                } else {
+                    $lista['urbano'][] = $value;
+                } else if ($value['categoria'] == "Milho - Consumo Familiar" || $value['categoria'] == "Feijão - Consumo Familiar" || $value['categoria'] == "Bovino - Carne - Consumo Familiar" || $value['categoria'] == "Bovino - Leite - Consumo Familiar" || $value['categoria'] == "Ovos - Consumo Familiar" || $value['categoria'] == "Aves - Consumo Familiar" || $value['categoria'] == "Milho - Venda" || $value['categoria'] == "Feijão - Venda" || $value['categoria'] == "Bovino - Carne - Venda" || $value['categoria'] == "Bovino - Leite - Venda" || $value['categoria'] == "Ovos - Venda" || $value['categoria'] == "Aves - Venda" || $value['categoria'] == "Aposentadoria Rural" || $value['categoria'] == "Emprego Rural"){
                     $valRural += $value['valor'];
+                    $lista['rural'][] = $value;
+                } else if ($value['categoria'] == "Bolsa Família" || $value['categoria'] == "BPC - LOAS") {
+                    $valProgramasSociais += $value['valor'];
+                    $lista['rural'][] = $value;
                 }
 
-                if ($value['categoria'] == "Milho" || $value['categoria'] == "Feijão" || $value['categoria'] == "Bovino - Carne" || $value['categoria'] == "Bovino - Leite" || $value['categoria'] == "Ovos" || $value['categoria'] == "Aves") {
+                /*
+                // Cria uma lista de produto para colocar na declaração
+                if ($value['categoria'] == "Milho - Consumo Familiar" || $value['categoria'] == "Feijão - Consumo Familiar" || $value['categoria'] == "Bovino - Carne - Consumo Familiar" || $value['categoria'] == "Bovino - Leite - Consumo Familiar" || $value['categoria'] == "Ovos - Consumo Familiar" || $value['categoria'] == "Aves - Consumo Familiar") {
 
                     if ($contador2 <= $contador) {
                         $contador2++;
                         $valConsumo += $value['valor'];
                         $lista .= $value['categoria'] . ", ";                        
                     }
-                }
+                }*/
             }
-            //echo $contador2;
+            
             $dados['valoresCategoria'] = [
                 'lista' => $lista,
-                'valConsumo' => $valConsumo,
+                'valProgramasSociais' => $valProgramasSociais,
                 'valUrbano' => $valUrbana,
                 'valRural' => $valRural,
                 'porcentagem' => ($valRural / $valTotal) * 100
