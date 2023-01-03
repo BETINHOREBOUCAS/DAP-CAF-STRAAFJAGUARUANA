@@ -4,6 +4,7 @@ namespace src\controllers;
 
 use \core\Controller;
 use src\Handlers\Acessor;
+use src\models\Membros;
 use src\models\Socios;
 
 class RendaController extends Controller
@@ -20,7 +21,8 @@ class RendaController extends Controller
         
         //Não mudar de linha/posição
         $dados['idsocio'] = $args['idsocio'];
-
+        $dados['membros'] = Membros::findMembroGeneral($args['idsocio']);
+        
         $this->render('renda', $dados);
     }
 

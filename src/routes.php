@@ -17,10 +17,19 @@ $router->post('/cadastro', 'CadastroController@cadastroAction');
 $router->get('/cadastro/editar/{id}', 'CadastroController@editarCadastro');
 $router->post('/cadastro/editar/{id}', 'CadastroController@editarCadastroAction');
 
-$router->get('/arquivo/{idsocio}', 'ArquivoController@index');
-$router->get('/arquivo/emissao/{idsocio}', 'ArquivoController@emissao');
-$router->post('/arquivo/emissao/{idsocio}', 'ArquivoController@emissaoAction');
+$router->get('/lista/membros/{id}', 'MembrosController@listaMembro');
+$router->get('/cadastrar/membros/{id}', 'MembrosController@cadastrarMembro');
+$router->post('/cadastrar/membros/{id}', 'MembrosController@cadastrarMembroAction');
+$router->get('/lista/membros/excluir/{id}/{idmembro}', 'MembrosController@excluirMembro');
+$router->post('/lista/membros/excluir/{id}/{idmembro}', 'MembrosController@excluirMembroAction');
+$router->get('/lista/membros/editar/{id}/{idmembro}', 'MembrosController@editarMembro');
+$router->post('/lista/membros/editar/{id}/{idmembro}', 'MembrosController@editarMembroAction');
 
-$router->get('/declaracao/{iddeclaracao}', 'DeclaracaoController@index');
+$router->get('/arquivo/{idsocio}', 'ArquivoController@index');
+$router->post('/arquivo/{idsocio}', 'ArquivoController@indexAction');
+$router->get('/arquivo/emissao/{iddoc}', 'ArquivoController@emissao');
+$router->post('/arquivo/emissao/{iddoc}', 'ArquivoController@emissaoAction');
+
+$router->get('/declaracao/{iddoc}', 'DeclaracaoController@index');
 $router->get('/declaracao/separacao/{iddeclaracao}', 'DeclaracaoController@declaracaoSeparado');
 $router->post('/declaracao/separacao/{iddeclaracao}', 'DeclaracaoController@declaracaoSeparadoAction');

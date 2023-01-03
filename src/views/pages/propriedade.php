@@ -78,6 +78,15 @@
                 <label for="bairro_proprietario">Bairro do Proprietário</label>
                 <input required type="text" autocomplete="random-string" name="bairro_proprietario" id="bairro_proprietario" value="<?= isset($propriedade) && !empty($propriedade) ? $propriedade[0]['bairro_proprietario'] : ''; ?>">
             </div>
+            <div class="margin">
+                <label for="uf_proprietario">UF de residência</label><br>
+                <input type="text" name="uf_proprietario" id="uf_proprietario" required autocomplete="random-string" value="<?= isset($propriedade) && !empty($propriedade) ? $propriedade[0]['uf_proprietario'] : ''; ?>">
+            </div>
+
+            <div class="margin">
+                <label for="municipio_proprietario">Município de residência</label><br>
+                <input type="text" name="municipio_proprietario" id="municipio_proprietario" required autocomplete="random-string" value="<?= isset($propriedade) && !empty($propriedade) ? $propriedade[0]['municipio_proprietario'] : ''; ?>">
+            </div>
         </div>
     </fieldset>
 

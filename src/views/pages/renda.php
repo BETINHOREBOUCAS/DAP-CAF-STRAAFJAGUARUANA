@@ -2,8 +2,6 @@
 
 <h1>Renda</h1>
 
-<a href="<?= $base; ?>/?id=<?=$idsocio;?>" style="font-size: 40px; padding: 20px;" title="Voltar"><i class="fa-solid fa-arrow-left"></i></a>
-
 <form action="" method="post">
     <div class="displayFlex">
         <div class="margin">
@@ -35,27 +33,31 @@
             <select name="membro" id="membro" required>
                 <option></option>
                 <option>Responsável - UFPA</option>
-                <option>Cônjuge</option>
-                <option>Companheiro(a)</option>
-                <option>Filho(a)</option>
-                <option>Enteado(a)</option>
-                <option>Neto(a) ou Bisneto(a)</option>
-                <option>Sogro(a)</option>
-                <option>Genro ou Nora</option>
-                <option>Outro Parente</option>
-                <option>Irmão(a)</option>
-                <option>Pai</option>
-                <option>Mãe</option>
+                <?php foreach ($membros as $key => $value) : ?>
+                    <option><?=$value['nome_membro']." - ".$value['parentesco_membro']?></option>
+                <?php endforeach ?>
+
             </select>
         </div>
         <div class="margin">
             <label for="valor">Valor R$</label>
             <input type="text" autocomplete="off" name="valor" id="valor" required>
-        </div>        
+        </div>
     </div>
 
 
-    <div><input type="submit" value="Adicionar"></div> <br><br>
+    <div class="ajust-button">
+        <div class="button-navigation">
+            <a href="<?= $base; ?>/?id=<?= $idsocio; ?>">
+                <div class="divButton button-red">Voltar</div>
+            </a>
+        </div>
+
+        <div class="button-navigation button-center button-green" style="border-radius: 5px">
+            <button>Salvar</button>
+        </div>
+    </div> 
+    <br><br>
 
     <?php if (isset($renda) && !empty($renda)) : ?>
         <div>
@@ -73,30 +75,30 @@
                         <td><?= $value['categoria']; ?></td>
                         <td><?= $value['membro']; ?></td>
                         <td>R$ <?= number_format($value['valor'], 2, ',', '.'); ?></td>
-                        <td><a href="<?=$base;?>/renda/excluir/<?=$value['id'].'/'.$value['id_socio'];?>" style="color: red;" title="Excluir"><i class="fa-solid fa-trash-can"></i></a></td>
+                        <td><a href="<?= $base; ?>/renda/excluir/<?= $value['id'] . '/' . $value['id_socio']; ?>" style="color: red;" title="Excluir"><i class="fa-solid fa-trash-can"></i></a></td>
                     </tr>
                 <?php endforeach ?>
 
             </table>
             <br><br>
-            <table  class="centro">
+            <table class="centro">
                 <tr>
                     <th>Renda Rural</th>
-                    <th>R$ <?=number_format($valoresCategoria['valRural'], 2, ',', '.');?></th>
+                    <th>R$ <?= number_format($valoresCategoria['valRural'], 2, ',', '.'); ?></th>
                 </tr>
                 <tr>
                     <th>Renda Urbana</th>
-                    <th>R$ <?=number_format($valoresCategoria['valUrbano'], 2, ',', '.');?></th>
+                    <th>R$ <?= number_format($valoresCategoria['valUrbano'], 2, ',', '.'); ?></th>
                 </tr>
                 <tr>
                     <th>Programas Sociais</th>
-                    <th>R$ <?=number_format($valoresCategoria['valProgramasSociais'], 2, ',', '.');?></th>
+                    <th>R$ <?= number_format($valoresCategoria['valProgramasSociais'], 2, ',', '.'); ?></th>
                 </tr>
                 <tr>
                     <th>% Rural</th>
-                    <th><?=number_format($valoresCategoria['porcentagem'], 2, ',', '.');?>%</th>
+                    <th><?= number_format($valoresCategoria['porcentagem'], 2, ',', '.'); ?>%</th>
                 </tr>
-                
+
             </table>
         </div>
     <?php endif ?>

@@ -1,214 +1,194 @@
 <?php $render('header'); ?>
 
-<h2>Informações Para Emissão do CAF</h2>
+<h2>Anexos para emissão do CAF</h2>
 
-<a href="<?= $base; ?>/arquivo/<?= $idsocio; ?>" style="font-size: 40px; padding: 20px;" title="Voltar"><i class="fa-solid fa-arrow-left"></i></a>
+<form method="post" enctype="multipart/form-data">
+    <div class="separador-anexo">
+        <div class="reponsavel">
+            <h3>Anexos do responsável</h3>
+            <div class="anexo">
+                <label for="file_rg_responsavel" class="label-anexo" access="check_rg_responsavel">
+                    <div class="anexo-icon" access="check_rg_responsavel">
+                        <i class="fa-solid fa-id-card" access="check_rg_responsavel"></i>
+                    </div>
+                </label>
+                <div class="anexo-title">
+                    <div class="check" id="check_rg_responsavel">
+                        <i class="fa-solid fa-circle-check"></i>
+                    </div> RG do responsável.*
+                </div>
+                <input type="file" name="file_rg_responsavel" id="file_rg_responsavel" required>
 
-<div>
-    <div class="titleTable">Titular 1</div>
-    <table class="enquadrar">
-        <!-- Dados Titular 1! -->
-        <tr>
-            <th class="width-25">Titular 1</th>
-            <td><?= $titulares[0]['titular1']; ?></td>
-        </tr>
-        <tr>
-            <th class="width-25">CPF</th>
-            <td><?= $titulares[0]['cpf1']; ?></td>
-        </tr>
-        <tr>
-            <th class="width-25">RG</th>
-            <td><?= $titulares[0]['rg1']; ?></td>
-        </tr>
-        <tr>
-            <th class="width-25">Nascimento</th>
-            <td><?= $titulares[0]['dn1']; ?></td>
-        </tr>
-        <tr>
-            <th class="width-25">Escolaridade</th>
-            <td><?= $titulares[0]['escolaridade1']; ?></td>
-        </tr>
-        <tr>
-            <th class="width-25">Mãe</th>
-            <td><?= $titulares[0]['mae1']; ?></td>
-        </tr>
+                <label for="file_cpf_responsavel" class="label-anexo" access="check_cpf_responsavel">
+                    <div class="anexo-icon" access="check_cpf_responsavel">
+                        <i class="fa-solid fa-id-card" access="check_cpf_responsavel"></i>
+                    </div>
+                </label>
+                <div class="anexo-title">
+                    <div class="check" id="check_cpf_responsavel">
+                        <i class="fa-solid fa-circle-check"></i>
+                    </div> CPF do responsável.
+                </div>
+                <input type="file" name="file_cpf_responsavel" id="file_cpf_responsavel">
+            </div>
 
-    </table>
+            <div class="anexo">
+                <label for="file_endereco_responsavel" class="label-anexo" access="check_endereco_responsavel">
+                    <div class="anexo-icon" access="check_endereco_responsavel">
+                        <i class="fa-solid fa-map-location-dot" access="check_endereco_responsavel"></i>
+                    </div>
+                </label>
+                <div class="anexo-title">
+                    <div class="check" id="check_endereco_responsavel">
+                        <i class="fa-solid fa-circle-check"></i>
+                    </div> Comprovante de endereço da UFPA.*
+                </div>
+                <input type="file" name="file_endereco_responsavel" id="file_endereco_responsavel" required>
 
-    <?php if (!empty($titulares[0]['titular2'])) : ?>
+                <label for="file_outros_responsavel" class="label-anexo" access="check_outros_responsavel">
+                    <div class="anexo-icon" access="check_outros_responsavel">
+                        <i class="fa-solid fa-file-circle-question" access="check_outros_responsavel"></i>
+                    </div>
+                </label>
+                <div class="anexo-title">
+                    <div class="check" id="check_outros_responsavel">
+                        <i class="fa-solid fa-circle-check"></i>
+                    </div> Outros documentos da UFPA.
+                </div>
+                <input type="file" name="file_outros_responsavel[]" id="file_outros_responsavel" multiple>
+            </div>
 
-        <br>
+            <div class="anexo">
+                <label for="file_doc_terra" class="label-anexo" access="check_doc_terra">
+                    <div class="anexo-icon" access="check_doc_terra">
+                        <i class="fa-solid fa-file-signature" access="check_doc_terra"></i>
+                    </div>
+                </label>
 
-        <div class="titleTable">Titular 2</div>
-        <table class="enquadrar">
-            <tr>
-                <th style="width: 25%;">Nome Completo: </th>
-                <td><?= $titulares[0]['titular2']; ?></td>
-            </tr>
-            <tr>
-                <th class="width-25">CPF:</th>
-                <td><?= $titulares[0]['cpf2']; ?></td>
-            </tr>
-            <tr>
-                <th class="width-25">RG:</th>
-                <td><?= $titulares[0]['rg2']; ?></td>
-            </tr>
-            <tr>
-                <th class="width-25">Nascimento</th>
-                <td><?= $titulares[0]['dn2']; ?></td>
-            </tr>
-            <tr>
-                <th class="width-25">Escolaridade</th>
-                <td><?= $titulares[0]['escolaridade2']; ?></td>
-            </tr>
-            <tr>
-                <th class="width-25">Mãe</th>
-                <td><?= $titulares[0]['mae2']; ?></td>
-            </tr>
-        </table>
+                <div class="anexo-title">
+                    <div class="check" id="check_doc_terra">
+                        <i class="fa-solid fa-circle-check"></i>
+                    </div> Contrato de uso da terra. *
+                </div>
+                <input type="file" name="file_doc_terra" id="file_doc_terra" required>
 
-    <?php endif ?>
+                <label for="file_terra_responsavel" class="label-anexo" access="check_terra_responsavel">
+                    <div class="anexo-icon" access="check_terra_responsavel">
+                        <i class="fa-solid fa-tractor" access="check_terra_responsavel"></i>
+                    </div>
+                </label>
 
-    <br>
+                <div class="anexo-title">
+                    <div class="check" id="check_terra_responsavel">
+                        <i class="fa-solid fa-circle-check"></i>
+                    </div> Doc. do proprietário e ITR/INCRA.*
+                </div>
+                <input type="file" name="file_terra_responsavel[]" id="file_terra_responsavel" multiple required>
+            </div>
 
-    <div class="titleTable">Informações Gerais</div>
-    <table class="enquadrar">
-        <tr>
-            <th colspan="2" class="width-25">Estado Civil</th>
-            <td colspan="2"><?= $titulares[0]['estado_civil']; ?></td>
-        </tr>
-        <tr>
-            <th colspan="2" class="width-25">Membros Que Reside na Propriedade</th>
-            <td colspan="2"><?= $titulares[0]['Mreside']; ?></td>
-        </tr>
-        <tr>
-            <th colspan="2" class="width-25">Membros que Ajuda na Propriedade</th>
-            <td colspan="2"><?= $titulares[0]['Majuda']; ?></td>
-        </tr>
-    </table>
+            <div class="anexo">
+                <label for="file_renda_CNIS" class="label-anexo" access="check_renda_CNIS">
+                    <div class="anexo-icon" access="check_renda_CNIS">
+                        <i class="fa-solid fa-file-lines" access="check_renda_CNIS"></i>
+                    </div>
+                </label>
+                <div class="anexo-title">
+                    <div class="check" id="check_renda_CNIS">
+                        <i class="fa-solid fa-circle-check"></i>
+                    </div> CNIS.*
+                </div>
+                <input type="file" name="file_renda_CNIS[]" id="file_renda_CNIS" multiple required>
 
-    <br>
+                <label for="file_renda_bolsa_familia" class="label-anexo" access="check_renda_bolsa_familia">
+                    <div class="anexo-icon" access="check_renda_bolsa_familia">
+                        <i class="fa-solid fa-people-roof" access="check_renda_bolsa_familia"></i>
+                    </div>
+                </label>
+                <div class="anexo-title">
+                    <div class="check" id="check_renda_bolsa_familia">
+                        <i class="fa-solid fa-circle-check"></i>
+                    </div> Renda bolsa família.
+                </div>
+                <input type="file" name="file_renda_bolsa_familia" id="file_renda_bolsa_familia">
+            </div>
 
-    <div class="titleTable">Endereço</div>
-    <table class="enquadrar">
-        <!-- Dados Endereço -->
-        <tr>
-            <th class="width-25">Endereço</th>
-            <td><?= $titulares[0]['endereco']; ?></td>
-        </tr>
+            <div class="anexo">
+                <label for="file_declaracao_renda" class="label-anexo" access="check_declaracao_renda">
+                    <div class="anexo-icon" access="check_declaracao_renda">
+                        <i class="fa-solid fa-dollar-sign" access="check_declaracao_renda"></i>
+                    </div>
+                </label>
+                <div class="anexo-title">
+                    <div class="check" id="check_declaracao_renda">
+                        <i class="fa-solid fa-circle-check"></i>
+                    </div> Declaração de renda. *
+                </div>
+                <input type="file" name="file_declaracao_renda" id="file_declaracao_renda" required>
 
-        <tr>
-            <th class="width-25">Numero</th>
-            <td><?= $titulares[0]['numero']; ?></td>
-        </tr>
-
-        <tr>
-            <th class="width-25">Bairro</th>
-            <td><?= $titulares[0]['bairro']; ?></td>
-        </tr>
-
-    </table>
-
-    <br>
-
-    <div class="titleTable">Renda</div>
-
-    <?php if (isset($renda) && !empty($renda)) : ?>
-        <div>
-            <table class="centro">
-                <tr>
-                    <th>Data Inclusão</th>
-                    <th>Categoria</th>
-                    <th>Valor</th>
-                </tr>
-                <?php foreach ($renda as $value) : ?>
-                    <tr>
-                        <td><?= $value['data_inclusao']; ?></td>
-                        <td><?= $value['categoria']; ?></td>
-                        <td>R$ <?= number_format($value['valor'], 2, ',', '.'); ?></td>
-                    </tr>
-                <?php endforeach ?>
-
-            </table>
-
-            <br>
-
-            <table class="centro">
-                <tr>
-                    <th>Renda Rural</th>
-                    <th>R$ <?= number_format($valoresCategoria['valRural'], 2, ',', '.'); ?></th>
-                </tr>
-                <tr>
-                    <th>Renda Urbana</th>
-                    <th>R$ <?= number_format($valoresCategoria['valUrbano'], 2, ',', '.'); ?></th>
-                </tr>
-                <tr>
-                    <th>Programas Sociais</th>
-                    <th>R$ <?= number_format($valoresCategoria['valProgramasSociais'], 2, ',', '.'); ?></th>
-                </tr>
-                <tr>
-                    <th>% Rural</th>
-                    <th><?= number_format($valoresCategoria['porcentagem'], 2, ',', '.'); ?>%</th>
-                </tr>
-
-            </table>
+                <label for="file_outras_rendas" class="label-anexo" access="check_outras_rendas">
+                    <div class="anexo-icon" access="check_outras_rendas">
+                        <i class="fa-solid fa-dollar-sign" access="check_outras_rendas"></i>
+                    </div>
+                </label>
+                <div class="anexo-title">
+                    <div class="check" id="check_outras_rendas">
+                        <i class="fa-solid fa-circle-check"></i>
+                    </div> Outras rendas.
+                </div>
+                <input type="file" name="file_outras_rendas[]" id="file_outras_rendas" multiple>
+            </div>
         </div>
-    <?php endif ?>
 
-    <br>
+        <?php if (!empty($membros) && isset($membros)) : ?>
+            <div class="membro">
+                <h3>Anexos dos membros</h3>
+                <?php foreach ($membros as $key => $value) : ?>
+                    <div class="anexo">
+                        <label for="file_rg_membro_<?= $value['cpf_membro']; ?>" class="label-anexo" access="check_rg_membro_<?= $value['cpf_membro']; ?>">
+                            <div class="anexo-icon" access="check_rg_membro_<?= $value['cpf_membro']; ?>">
+                                <i class="fa-solid fa-id-card" access="check_rg_membro_<?= $value['cpf_membro']; ?>"></i>
+                            </div>
+                        </label>
+                        <div class="anexo-title">
+                            <div class="check" id="check_rg_membro_<?= $value['cpf_membro']; ?>">
+                                <i class="fa-solid fa-circle-check"></i>
+                            </div> RG do <?= $value['parentesco_membro'] . " - " . $value['nome_membro']; ?>.*
+                        </div>
+                        <input type="file" name="file_rg_membros[]" id="file_rg_membro_<?= $value['cpf_membro']; ?>" required>
 
-    <div class="titleTable">Propriedade</div>
-    <?php if (isset($propriedade) && !empty($propriedade)) : ?>
-        <table class="enquadrar">
-            <!-- Dados Titular 1 -->
-            <tr>
-                <th colspan="2" class="width-25">Nome da Propriedade</th>
-                <td colspan="2"><?= $propriedade[0]['propriedade']; ?></td>
-            </tr>
-            <tr>
-                <th colspan="2" class="width-25">Denominação do Imóvel</th>
-                <td colspan="2"><?= $propriedade[0]['denominacao']; ?></td>
-            </tr>
-            <tr>
-                <th colspan="2" class="width-25">Área PLantada</th>
-                <td colspan="2"><?= $propriedade[0]['area']; ?>ha</td>
-            </tr>
-            <tr>
-                <th colspan="2" class="width-25">Nome Proprietário</th>
-                <td colspan="2"><?= $propriedade[0]['proprietario']; ?></td>
-            </tr>
-            <tr>
-                <th colspan="2" class="width-25">CPF do Proprietário</th>
-                <td colspan="2"><?= $propriedade[0]['cpfP']; ?></td>
-            </tr>
-            <tr>
-                <th colspan="2" class="width-25">Nome Representante Legal</th>
-                <td colspan="2"><?= $propriedade[0]['RLegal']; ?></td>
-            </tr>
-            <tr>
-                <th colspan="2">CPF do Representante Legal</th>
-                <td colspan="2"><?= $propriedade[0]['cpfR']; ?></td>
-            </tr>
-        </table>
-    <?php endif ?>
+                        <label for="file_cpf_membro_<?= $value['cpf_membro']; ?>" class="label-anexo" access="check_cpf_membro_<?= $value['cpf_membro']; ?>">
+                            <div class="anexo-icon" access="check_cpf_membro_<?= $value['cpf_membro']; ?>">
+                                <i class="fa-solid fa-id-card" access="check_cpf_membro_<?= $value['cpf_membro']; ?>"></i>
+                            </div>
+                        </label>
+                        <div class="anexo-title">
+                            <div class="check" id="check_cpf_membro_<?= $value['cpf_membro']; ?>">
+                                <i class="fa-solid fa-circle-check"></i>
+                            </div> CPF do <?= $value['parentesco_membro'] . " - " . $value['nome_membro']; ?>.*
+                        </div>
+                        <input type="file" name="file_cpf_membros[]" id="file_cpf_membro_<?= $value['cpf_membro']; ?>" required>
+                    </div>
 
-    <br>
 
-</div>
+                <?php endforeach ?>
+            </div>
+        <?php endif ?>
 
-<div>
-    <?php if (isset($renda) && !empty($renda) && isset($propriedade) && !empty($propriedade)) : ?>
-        <form method="post">
-            <input type="submit" value="Confirmar Informações">
-        </form>
-    <?php endif ?>
-</div>
+    </div>
+    <div class="ajust-button">
+        <div class="button-navigation">
+            <a href="<?= $base; ?>/arquivo/<?= $doc_socio[0]['id_socio_responsavel']; ?>">
+                <div class="divButton button-red">Voltar</div>
+            </a>
+        </div>
 
-<div class="assinatura">
-    _______________________________________________________ <br>
-    Assinatura Declarante
-</div>
+        <div class="button-navigation button-center button-green" style="border-radius: 5px">
+            <button>Confirmar</button>
+        </div>
+    </div>
+</form>
 
+<script src="<?= $base; ?>/assets/js/control-anexos.js"></script>
 </body>
 
 </html>

@@ -56,7 +56,7 @@ class Socios extends Model
                 $cpf = ".";
             }            
     
-            $sql = "SELECT * FROM `socios` WHERE titular1 LIKE '%$nome%' OR titular2 LIKE '%$nome%' OR cpf1 = '$cpf' OR cpf2 = '$cpf'";
+            $sql = "SELECT * FROM `socios` WHERE nome_socio LIKE '%$nome%' OR cpf_socio = '$cpf'";
     
             $result = $pdo->query($sql);
             $sql = $result->fetchAll(PDO::FETCH_ASSOC);
@@ -110,10 +110,10 @@ class Socios extends Model
         }
     }
 
-    public static function findGeneral($table, $idSocio) {
+    public static function findGeneral($table, $coluna, $info_coluna) {
         $pdo = Conection::sqlSelect();
 
-        $sql = "SELECT * FROM $table WHERE id_socio_responsavel = $idSocio ORDER BY ID DESC";
+        $sql = "SELECT * FROM $table WHERE $coluna = $info_coluna ORDER BY ID DESC";
         $result = $pdo->query($sql);
         $sql = $result->fetchAll(PDO::FETCH_ASSOC);
         if ($result->rowCount()>0) {
@@ -144,13 +144,12 @@ class Socios extends Model
     public static function editarCadastro($table, $dados, $idSocio) {
         $pdo = Conection::sqlSelect();
 
-        $dados['sindicato2'] = '';
         echo "<pre>";
         print_r($dados);
 
         $string = '';
         foreach ($dados as $key => $value) {
-            if ($key != 'sindicato2') {
+            if ($key != 'mao_obra_socio') {
                 $string .= "$key = '$value', "; 
             } else {
                 $string .= "$key = '$value' ";
@@ -158,7 +157,7 @@ class Socios extends Model
             }
              
         }
-
+        
         $sql = "UPDATE $table SET $string WHERE id = $idSocio";
         $pdo->query($sql);
         

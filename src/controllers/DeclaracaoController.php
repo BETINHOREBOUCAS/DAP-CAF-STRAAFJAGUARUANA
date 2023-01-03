@@ -12,11 +12,16 @@ class DeclaracaoController extends Controller
 
     public function index($args) {
 
-        $idDeclaracao = $args['iddeclaracao'];
-
-        $dados = Declaracao::buscarInfoDeclaracao($idDeclaracao);
-        $dados['renda'] = Acessor::somar($dados['renda']);
-        
+        $id_doc = $args['iddoc'];
+        $dados = Acessor::somar(Socios::findGeneral('doc_rendas', 'id_doc_socio', $id_doc));
+        $dados['id_doc'] = $id_doc;
+        $dados['doc_socio'] = Socios::findGeneral('doc_socios', 'id', $id_doc);
+        $dados['propriedade'] = Socios::findGeneral('doc_propriedades', 'id_doc_socio', $id_doc);
+        $dados['membros'] = Socios::findGeneral('doc_membros', 'id_doc_socio', $id_doc);
+        /*
+        echo "<pre>";
+        print_r($dados);
+        */
         $this->render("declaracao", $dados);
     }
 
@@ -24,12 +29,16 @@ class DeclaracaoController extends Controller
         $idDeclaracao = $args['iddeclaracao'];
         $dados = Declaracao::buscarInfoDeclaracao($idDeclaracao);
         $dadosSeparado = Declaracao::buscarSeparado($idDeclaracao);
+
+        echo "<pre>";
+        print_r($dadosSeparado);
+        exit;
         if ($dadosSeparado) {            
             $dados['infoSeparado'] = $dadosSeparado[0];
 
             $this->render("declaracaoSeparado", $dados);
         }else {
-            $this->render("declaracaoSeparadoForm", $dados);
+            //$this->render("declaracaoSeparadoForm", $dados);
         }
 
         

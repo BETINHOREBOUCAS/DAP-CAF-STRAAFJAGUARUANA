@@ -10,16 +10,17 @@ use PDO;
 class Declaracao extends Model
 {
 
+    
     public static function buscarInfoDeclaracao($id) {
         $pdo = Conection::sqlSelect();
 
-        $sql = "SELECT * FROM documentos WHERE id = $id";
+        $sql = "SELECT * FROM doc_socios WHERE id = $id";
         $result = $pdo->query($sql);
         $sql = $result->fetchAll(PDO::FETCH_ASSOC);
 
         $info['dados'] = $sql[0];
 
-        $sql = "SELECT * FROM doc_renda WHERE id_documento = $id";
+        $sql = "SELECT * FROM doc_rendas WHERE id_doc_socio = $id";
         $result = $pdo->query($sql);
         $sql = $result->fetchAll(PDO::FETCH_ASSOC);
 
@@ -31,6 +32,7 @@ class Declaracao extends Model
             return false;
         }
     }
+    
 
     public static function buscarSeparado($idDocumento) {
         $pdo = Conection::sqlSelect();

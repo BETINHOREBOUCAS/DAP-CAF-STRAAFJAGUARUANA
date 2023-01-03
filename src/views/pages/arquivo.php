@@ -2,57 +2,72 @@
 
 <h1>Arquivos</h1>
 
-<a href="<?= $base; ?>/?id=<?= $idsocio; ?>" style="font-size: 40px; padding: 20px;" title="Voltar"><i class="fa-solid fa-arrow-left"></i></a>
-
 <!-- ERRO LINK http://localhost/sistemadap/public/arquivo/10 -->
-<h4><?= $socios[0]['titular1'] . '<br>CPF = ' . $socios[0]['cpf1']; ?></h4>
+<h4><?= $socios[0]['nome_socio'] . '<br>CPF = ' . $socios[0]['cpf_socio']; ?></h4>
 <h4><?= isset($socios[0]['titular2']) && !empty($socios[0]['titular2']) ? $socios[0]['titular2'] . '<br>CPF = ' . $socios[0]['cpf2'] : ''; ?></h4>
 <!-- Fim do erro -->
 
-<div style="font-size: 25px; color: red; padding: 5px" class="margin" title="Adicionar DAP">
-    <a href="<?= $base; ?>/arquivo/emissao/<?= $socios[0]['id']; ?>"><i class="fa-solid fa-folder-plus"></i></a>
+<div class="ajust-button">
+    <div class="button-navigation">
+        <a href="<?= $base; ?>/?id=<?= $idsocio; ?>">
+            <div class="divButton button-red">Voltar</div>
+        </a>
+    </div>
+
+    <div class="button-navigation button-center button-green" style="border-radius: 5px">
+        <form method="post">
+            <div class="divButton button-blue">
+                <button>Criar CAF</button>
+            </div>
+        </form>
+    </div>
 </div>
 
 <?php if (isset($aviso) && !empty($aviso)) : ?>
-    <div class="sucess"><?= $aviso; ?></div>
+    <div class="aviso"><?= $aviso; ?></div>
 <?php endif ?>
 
 <div>
-    <?php if (isset($titulares) && !empty($titulares)) : ?>
+    <?php if (isset($doc_socios) && !empty($doc_socios)) : ?>
         <table class="centro">
             <tr>
                 <th>Data de Inclusão</th>
-                <th>Nomo do Imóvel</th>
+                <th>Nome do Imóvel</th>
                 <th>Proprietário</th>
-                <th>Representante Legal</th>
+
                 <td></td>
             </tr>
 
-            <?php foreach ($titulares as $key => $value) : ?>
+            <?php foreach ($doc_socios as $key => $value) : ?>
+
 
                 <tr>
                     <td><?= $value['data_inclusao']; ?></td>
-                    <td><?= $value['propriedade']; ?></td>
-                    <td><?= $value['proprietario']; ?></td>
-                    <td><?= $value['RLegal']; ?></td>
-
+                    <td><?= $propriedade[0]['propriedade']; ?></td>
+                    <td><?= $propriedade[0]['proprietario']; ?></td>
                     <td>
-                        <label><a href="<?= $base; ?>/declaracao/<?= $value['id']; ?>" title="Declarações" target="_blank"><i class="fa-solid fa-file-invoice"></i></a></label>
+                        <?php if (!is_dir("docs_socios/" . $value['id'] . "_CAF_" . $socios[0]['cpf_socio'])) : ?>
 
-                        <?php if ($titulares[$key]['estado_civil'] == "Separado(a)") : ?> |
+                            <label>
+                                <a href="<?= $base; ?>/declaracao/<?= $value['id']; ?>" title="Declarações" target="_blank"><i class="fa-solid fa-file-invoice"></i></a>
+                            </label>
+
+                            <!--<?php if ($value['estado_civil_socio'] == "Separado(a)") : ?> |
                             <label>
                                 <a href="<?= $base; ?>/declaracao/separacao/<?= $value['id']; ?>" title="Declaração de Separado" style="color: #F44A6C" target="_blank"><i class="fa-solid fa-heart-crack"></i></a>
                             </label>
+                                <?php endif ?>-->
+                            |
+
+                            <label>
+                                <a href="<?= $base; ?>/arquivo/emissao/<?= $value['id']; ?>" title="Anexar Documentos"><i class="fa-solid fa-cloud-arrow-up"></i></a>
+                            </label>
+                        <?php else : ?>
+                            <label>
+                                <a href="<?= "$base/docs_socios/" . $value['id'] . "_CAF_" . $socios[0]['cpf_socio']."/".$value['id'] . "_CAF_" . $socios[0]['cpf_socio'].".zip"; ?>" title="Baixar documentos"><i class="fa-solid fa-file-arrow-down"></i></a>
+                            </label>
                         <?php endif ?>
 
-                        | <!-- Fazer funcionar o upload dos documentos -->
-                        <!--
-                        <label for="documentos" title="Enviar Documentos de Indentificação" style="color: #ff574d;"><i class="fa-solid fa-id-card"></i></label>
-                        <input type="file" name="documentos" id="documentos" style="display: none;">
-                        |
-                        <label for="processo" title="Enviar Processo" style="color: #ff574d;"><i class="fa-solid fa-cloud-arrow-up"></i></label>
-                        <input type="file" name="documentos" id="documentos" style="display: none;">
-                        -->
                     </td>
                 </tr>
             <?php endforeach ?>
@@ -60,7 +75,6 @@
         </table>
     <?php endif ?>
 </div>
-
 
 </body>
 

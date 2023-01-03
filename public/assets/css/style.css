@@ -11,6 +11,14 @@
     width: 100%;
 }
 
+.margin-left-5 {
+  margin-left: 5px;
+}
+
+.margin-rigth-5 {
+  margin-right: 5px;
+}
+
 label {
   cursor: pointer;
 }
@@ -50,6 +58,10 @@ input[type=text], input[type=date], input[type=number], select {
     border: 1px solid #dddddd;
     padding: 8px;
   }
+
+  th {
+    font-size: 12pt;
+  }
   
   tr:nth-child(even) {
     background-color: #dddddd;
@@ -80,10 +92,6 @@ input[type=text], input[type=date], input[type=number], select {
     display: flex;
     align-items: center;
     justify-content: center;
-  }
-
-  label {
-    padding: 5px;
   }
 
   .acoes {
@@ -119,9 +127,146 @@ input[type=text], input[type=date], input[type=number], select {
     color: blue;
   }
 
+  .button-center {
+    text-align: center;
+    margin: 20px;
+  }
+
+  .button-left {
+    text-align: left;
+    margin: 20px;
+  }
+
+  .button-green button, .button-green {
+    background-color: #4CAF50;
+  }
+
+  .button-green button:hover, .button-green:hover {
+    background-color: #37833a;
+  }
+
+  .button-red button, .button-red {
+    background-color: #f44336;
+  }
+
+  .button-red button, .button-red:hover {
+    background-color: #c93126;
+  }
+
+  .button-gray button, .button-gray {
+    background-color: #e7e7e7; 
+    color: black;
+  }
+
+  .button-gray button:hover, .button-gray:hover {
+    background-color: #bbb9b9; 
+  }
+
+  .button-black button, .button-black {
+    background-color: #555555;
+  }
+
+  .button-black button:hover, .button-black:hover {
+    background-color: #3a3838;
+  }
+
+  .button-blue button, .button-blue {
+    background-color: #008CBA;
+  }
+
+  .button-blue button:hover, .button-blue:hover {
+    background-color: #047196;
+  }
+
+  .button-navigation button, .button-navigation .divButton {
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 5px;
+    height: 40px;
+    width: 160px;
+    line-height: 40px;
+  }
+
+  .button-navigation button:hover {
+    cursor: pointer;
+  }
+
+  .ajust-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+  }
+
   .assinatura {
     text-align: center;
     display: none;
+  }
+
+  .separador-anexo {
+    display: flex;
+  }
+
+  .separador-anexo .reponsavel {
+    width: 50%;
+  }
+
+  .separador-anexo .membro {
+    width: 50%;
+  }
+
+  .anexo, .reponsavel h3, .membro h3 {
+    display: flex;
+    margin: 20px;
+  }
+
+  .anexo input {
+    display: none;
+  }
+
+  .anexo-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+    background-color: #0398A5;
+    text-align: center;
+    line-height: 50px;
+    color: white;
+    margin-right: 15px;
+    cursor: pointer;
+  }
+
+  .membro .anexo-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+    background-color: #FD8867;
+    text-align: center;
+    line-height: 50px;
+    color: white;
+    margin-right: 15px;
+    cursor: pointer;
+  }
+
+  .anexo-title {
+    border-bottom: 1px solid rgb(194, 189, 189);
+    display: flex;
+    align-items: center;
+    width: 70%;
+  }
+
+  .check {
+    color: #4CAF50;
+    margin-right: 10px;
+    display: none;
+  }
+
+  label {
+    padding: 5px;
   }
 
   @media only print {
