@@ -34,3 +34,42 @@ cpfInput.addEventListener("input", () => {
         cpfInput.value = formatCPF;
     }
 });
+
+/********************************************************************************************************/
+// Deixa preencher apenas o campo de socio ou membro
+/********************************************************************************************************/
+
+var nomeSocio = document.getElementById('nome');
+var cpfSocio = document.getElementsByName('cpf')[0];
+var nomeMembro = document.getElementById('nomeMembro');
+var cpfMembro = document.getElementsByName('cpfMembro')[0];
+
+if (cpfSocio) {
+    nomeSocio.addEventListener('blur', ()=>{
+        if (nomeSocio.value.length > 0) {
+            nomeMembro.value = '';
+            cpfMembro.value = '';
+        }
+    });
+    
+    cpfSocio.addEventListener('blur', ()=>{
+        if (cpfSocio.value.length > 0) {
+            nomeMembro.value = '';
+            cpfMembro.value = '';
+        }
+    });
+
+    nomeMembro.addEventListener('blur', ()=>{
+        if (nomeMembro.value.length > 0) {
+            nomeSocio.value = '';
+            cpfSocio.value = '';
+        }
+    });
+
+    cpfMembro.addEventListener('blur', ()=>{
+        if (cpfMembro.value.length > 0) {
+            nomeSocio.value = '';
+            cpfSocio.value = '';
+        }
+    });
+}

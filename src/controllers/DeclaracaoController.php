@@ -4,11 +4,25 @@ namespace src\controllers;
 
 use \core\Controller;
 use src\Handlers\Acessor;
+use src\Handlers\FacilityHandlers;
 use src\models\Declaracao;
 use src\models\Socios;
+use src\models\Usuarios;
 
 class DeclaracaoController extends Controller
 {
+
+    public function __construct() {
+        if (!isset($_SESSION['usuario']) || empty($_SESSION['usuario'])) {
+            $this->redirect('/login');
+        } else {
+            $user = Usuarios::getUser($_SESSION['usuario']['email']);
+
+            if ($_SESSION['usuario']['token'] != $user['token']) {
+                $this->redirect('/login');
+            }
+        }
+    }
 
     public function index($args) {
 
@@ -18,10 +32,9 @@ class DeclaracaoController extends Controller
         $dados['doc_socio'] = Socios::findGeneral('doc_socios', 'id', $id_doc);
         $dados['propriedade'] = Socios::findGeneral('doc_propriedades', 'id_doc_socio', $id_doc);
         $dados['membros'] = Socios::findGeneral('doc_membros', 'id_doc_socio', $id_doc);
-        /*
-        echo "<pre>";
-        print_r($dados);
-        */
+        $idSocio = $dados['doc_socio'][0]['id_socio_responsavel'];
+        FacilityHandlers::registrarAlteracao(['id_doc_socio' => $id_doc], $idSocio, 'emissao_declarações');
+        
         $this->render("declaracao", $dados);
     }
 
@@ -39,11 +52,7 @@ class DeclaracaoController extends Controller
             $this->render("declaracaoSeparado", $dados);
         }else {
             //$this->render("declaracaoSeparadoForm", $dados);
-        }
-
-        
-
-        
+        }        
     }
 
     public function declaracaoSeparadoAction($args) {

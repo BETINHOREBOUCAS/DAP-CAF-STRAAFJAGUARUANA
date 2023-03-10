@@ -3,25 +3,80 @@
 namespace src\models;
 
 use \core\Model;
-use DateTime;
-use DateTimeZone;
 use PDO;
 
 class Membros extends Model {
 
-    public static function findMembroGeneral($id, $ativo = true) {
+    /*---------------------------------------------------------------------------------*/
+        // realizado configuração Multi Empresa
+    /*---------------------------------------------------------------------------------*/
+
+    public static function findMembroGeneral($id, $idEmpresa) {
         $pdo = Conection::sqlSelect();
 
-        if ($ativo) {
-            $sql = "SELECT * FROM `membros` WHERE id_socio_responsavel = $id";
-            $result = $pdo->query($sql);
-            $sql = $result->fetchAll(PDO::FETCH_ASSOC);
-            if ($result->rowCount()>0) {
-                return $sql;
-            }
+        $sql = "SELECT * FROM `membros` WHERE id_socio_responsavel = $id AND id_empresa = $idEmpresa";
+        $result = $pdo->query($sql);
+        $sql = $result->fetchAll(PDO::FETCH_ASSOC);
+        if ($result->rowCount()>0) {
+            return $sql;
+        }
+                
+    }
+
+    /*---------------------------------------------------------------------------------*/
+        // FIM
+    /*---------------------------------------------------------------------------------*/
+
+    /*---------------------------------------------------------------------------------*/
+        // realizado configuração Multi Empresa
+    /*---------------------------------------------------------------------------------*/
+
+    public static function findMembro($cpf, $idEmpresa) {
+        $pdo = Conection::sqlSelect();
+        
+        $sql = "SELECT * FROM `membros` WHERE id_empresa = $idEmpresa AND cpf_membro = '$cpf'";
+        $result = $pdo->query($sql);
+        $sql = $result->fetchAll(PDO::FETCH_ASSOC);
+        if ($result->rowCount()>0) {
+            return $sql;
+        }
+
+    }
+
+    /*---------------------------------------------------------------------------------*/
+        // FIM
+    /*---------------------------------------------------------------------------------*/
+
+    /*---------------------------------------------------------------------------------*/
+        // realizado configuração Multi Empresa
+    /*---------------------------------------------------------------------------------*/
+
+    public static function findMembroThu($nome, $idEmpresa, $cpf, $id = false) {
+        $pdo = Conection::sqlSelect();
+
+        if (empty($nome)) {
+            $nome = ".";
+        }
+        if (empty($cpf)) {
+            $cpf = ".";
+        }            
+    
+        if ($id) {
+            $sql = "SELECT * FROM `membros` WHERE id_empresa = $idEmpresa AND id = $id"; 
+        } else {
+           $sql = "SELECT * FROM `membros` WHERE id_empresa = $idEmpresa AND nome_membro LIKE '%$nome%' OR id_empresa = $idEmpresa AND cpf_membro = '$cpf'";
         }
         
+    
+        $result = $pdo->query($sql);
+        $sql = $result->fetchAll(PDO::FETCH_ASSOC);
+
+        return $sql;
     }
+
+    /*---------------------------------------------------------------------------------*/
+        // FIM
+    /*---------------------------------------------------------------------------------*/
 
     public static function editarMembro($idMembro, $table, $dados) {
         $pdo = Conection::sqlSelect();

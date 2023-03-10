@@ -4,15 +4,33 @@ namespace src\controllers;
 
 use \core\Controller;
 use src\Handlers\Acessor;
+use src\Handlers\FacilityHandlers;
 use src\models\Membros;
 use src\models\Socios;
+use src\models\Usuarios;
 
 class RendaController extends Controller
 {
 
+    public $idEmpresa;
+
+    public function __construct() {
+        if (!isset($_SESSION['usuario']) || empty($_SESSION['usuario'])) {
+            $this->redirect('/login');
+        } else {
+            $user = Usuarios::getUser($_SESSION['usuario']['email']);
+
+            if ($_SESSION['usuario']['token'] != $user['token']) {
+                $this->redirect('/login');
+            }
+        }
+
+        $this->idEmpresa = $_SESSION['empresa']['id'];
+    }
+
     public function index($args)
     {
-        $result = Socios::findRenda($args['idsocio']);
+        $result = Socios::findRenda($args['idsocio'], $this->idEmpresa);
 
         //Somar renda
         if ($result) {
@@ -21,7 +39,7 @@ class RendaController extends Controller
         
         //Não mudar de linha/posição
         $dados['idsocio'] = $args['idsocio'];
-        $dados['membros'] = Membros::findMembroGeneral($args['idsocio']);
+        $dados['membros'] = Membros::findMembroGeneral($args['idsocio'], $this->idEmpresa);
         
         $this->render('renda', $dados);
     }
@@ -36,14 +54,21 @@ class RendaController extends Controller
 
         $dados['valor'] = floatval(str_replace(',', '.', $dados['valor']));
         
-        Socios::addInfo('renda', $dados);
+        $idRegistro = Socios::addInfo('renda', $dados);
+        if ($idRegistro) {
+            FacilityHandlers::registrarAlteracao($dados, $idSocio, 'cadastro_renda');
+        }
+        
         $this->redirect("/renda/$idSocio");
     }
 
     public function excluir($args) {
         $idSocio = $args['idsocio'];
         $idObjeto = $args['idobjeto'];
+        $dadosExcluidos = Socios::findRendaOne($idObjeto, $this->idEmpresa);
+        
         Socios::delTable('renda', $idObjeto);
+        FacilityHandlers::registrarAlteracao($dadosExcluidos, $idSocio, 'excluir_renda');
         $this->redirect("/renda/$idSocio");
     }
 }

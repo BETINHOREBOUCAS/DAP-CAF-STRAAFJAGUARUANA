@@ -27,13 +27,12 @@ class Acessor
             }
 
             //Calculando renda rural e urbana %
-
             foreach ($dados['renda'] as $value) {
                 $valTotal += $value['valor'];
                 if ($value['categoria'] == "Emprego Urbano" || $value['categoria'] == "Aposentadoria Urbana") {
                     $valUrbana += $value['valor'];
                     $lista['urbano'][] = $value;
-                } else if ($value['categoria'] == "Milho - Consumo Familiar" || $value['categoria'] == "Feijão - Consumo Familiar" || $value['categoria'] == "Bovino - Carne - Consumo Familiar" || $value['categoria'] == "Bovino - Leite - Consumo Familiar" || $value['categoria'] == "Ovos - Consumo Familiar" || $value['categoria'] == "Aves - Consumo Familiar" || $value['categoria'] == "Milho - Venda" || $value['categoria'] == "Feijão - Venda" || $value['categoria'] == "Bovino - Carne - Venda" || $value['categoria'] == "Bovino - Leite - Venda" || $value['categoria'] == "Ovos - Venda" || $value['categoria'] == "Aves - Venda" || $value['categoria'] == "Aposentadoria Rural" || $value['categoria'] == "Emprego Rural"){
+                } else if ($value['categoria'] == "Milho - Consumo Familiar" || $value['categoria'] == "Feijão - Consumo Familiar" || $value['categoria'] == "Bovino - Carne - Consumo Familiar" || $value['categoria'] == "Bovino - Leite - Consumo Familiar" || $value['categoria'] == "Ovos - Consumo Familiar" || $value['categoria'] == "Aves - Consumo Familiar" || $value['categoria'] == "Milho - Venda" || $value['categoria'] == "Feijão - Venda" || $value['categoria'] == "Bovino - Carne - Venda" || $value['categoria'] == "Bovino - Leite - Venda" || $value['categoria'] == "Ovos - Venda" || $value['categoria'] == "Aves - Venda" || $value['categoria'] == "Aposentadoria Rural" || $value['categoria'] == "Emprego Rural" || $value['categoria'] == "Caprinhos - Consumo Familiar" || $value['categoria'] == "Caprinho - Carne - Venda" || $value['categoria'] == "Frutas - Consumo Familiar" || $value['categoria'] == "Frutas - Venda"){
                     $valRural += $value['valor'];
                     $lista['rural'][] = $value;
                 } else if ($value['categoria'] == "Bolsa Família" || $value['categoria'] == "BPC - LOAS") {
@@ -41,16 +40,6 @@ class Acessor
                     $lista['rural'][] = $value;
                 }
 
-                /*
-                // Cria uma lista de produto para colocar na declaração
-                if ($value['categoria'] == "Milho - Consumo Familiar" || $value['categoria'] == "Feijão - Consumo Familiar" || $value['categoria'] == "Bovino - Carne - Consumo Familiar" || $value['categoria'] == "Bovino - Leite - Consumo Familiar" || $value['categoria'] == "Ovos - Consumo Familiar" || $value['categoria'] == "Aves - Consumo Familiar") {
-
-                    if ($contador2 <= $contador) {
-                        $contador2++;
-                        $valConsumo += $value['valor'];
-                        $lista .= $value['categoria'] . ", ";                        
-                    }
-                }*/
             }
             
             $dados['valoresCategoria'] = [
@@ -58,7 +47,7 @@ class Acessor
                 'valProgramasSociais' => $valProgramasSociais,
                 'valUrbano' => $valUrbana,
                 'valRural' => $valRural,
-                'porcentagem' => ($valRural / $valTotal) * 100
+                'porcentagem' => ($valRural / $valUrbana) * 100
             ];
 
             return $dados;

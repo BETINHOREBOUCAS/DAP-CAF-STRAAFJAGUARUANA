@@ -2,12 +2,29 @@
 namespace src\controllers;
 
 use \core\Controller;
+use src\models\Membros;
 use src\models\Socios;
+use src\models\Usuarios;
 
 class HomeController extends Controller {
 
+    public $idEmpresa;
+
+    public function __construct() {
+        if (!isset($_SESSION['usuario']) || empty($_SESSION['usuario'])) {
+            $this->redirect('/login');
+        } else {
+            $user = Usuarios::getUser($_SESSION['usuario']['email']);
+
+            if ($_SESSION['usuario']['token'] != $user['token']) {
+                $this->redirect('/login');
+            }
+        }
+
+        $this->idEmpresa = $_SESSION['empresa']['id'];
+    }
+
     public function index() {
-        //Adicionar sessiao cadastrado com sucesso
         
         $dados = [];
         if (!empty($_SESSION['notice'])) {
@@ -19,11 +36,32 @@ class HomeController extends Controller {
             $nome = filter_input(INPUT_GET, 'nome', FILTER_DEFAULT);
             $cpf = filter_input(INPUT_GET, 'cpf', FILTER_DEFAULT);
             $id = filter_input(INPUT_GET, 'id', FILTER_DEFAULT);
-            $dados['socios'] = Socios::find($nome, $cpf, $id);
+            $dados['socios'] = Socios::find($nome, $cpf, $this->idEmpresa, $id);
+        }
 
+        if (isset($_GET['nomeMembro']) && !empty($_GET['nomeMembro']) || isset($_GET['cpfMembro']) && !empty($_GET['cpfMembro'])) {
+            $nomeMembro = filter_input(INPUT_GET, 'nomeMembro', FILTER_DEFAULT);
+            $cpfMembro = filter_input(INPUT_GET, 'cpfMembro', FILTER_DEFAULT);            
+            $dados['membros'] = Membros::findMembroThu($nomeMembro, $this->idEmpresa, $cpfMembro);
         }
 
         $this->render('lista', $dados);
+    }
+
+    public function verifyCPF() {
+        $cpf = $_POST['cpf'];
+        $socios = Socios::find('', $cpf, $this->idEmpresa);
+        if ($socios) {
+            $cpf_verify['cpf_verify'] = $socios[0]['cpf_socio'];
+        } else {
+            $membros = Membros::findMembro($cpf, $this->idEmpresa);
+            if ($membros) {
+                $cpf_verify['cpf_verify'] = $membros[0]['cpf_membro'];
+            } else {
+                $cpf_verify['cpf_verify'] = 0;
+            }
+        }       
+        echo json_encode($cpf_verify);
     }
 
 }

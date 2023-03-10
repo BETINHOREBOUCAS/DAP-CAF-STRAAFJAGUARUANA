@@ -1,0 +1,46 @@
+.config-block {
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.config-block .sub-block {
+    background-color: darkcyan;
+    margin: 10px;
+    width: 150px;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.config-block a {
+    color: black;
+}
+
+.config-block .sub-block .icon-block {
+    text-align: center;
+    font-size: 22pt;
+}
+
+.sub-content {
+    margin-top: 100px;
+}
+
+.table-list, td, th {
+    border: 0px solid black;
+    text-align: center;
+    font-size: 11pt;
+}
+
+.table-list thead {
+    background-color: khaki;
+}
+
+.verifyPassaword {
+    color: red;
+    margin-left: 5px;
+    display: none;
+}

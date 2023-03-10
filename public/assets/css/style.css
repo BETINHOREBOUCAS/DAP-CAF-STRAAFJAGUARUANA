@@ -1,3 +1,7 @@
+body {
+  margin: 0;
+}
+
 .width-25 {
   width: 25%;
 }
@@ -23,7 +27,39 @@ label {
   cursor: pointer;
 }
 
-input[type=text], input[type=date], input[type=number], select {
+.user {
+  position: absolute;
+  right: 0;
+  top: 0;
+  margin-right: 10px;
+  color: rgb(145, 142, 142);
+  width: 300px;
+  text-align: right;
+}
+
+.user .button-action button{
+  width: 30%;
+  line-height: 20px;
+  height: 20px;
+  margin: 2px;
+  float: right;
+}
+
+.search-socio {
+  width: 50%;
+  margin: 7px;
+}
+
+.search-membro {
+  width: 50%;
+  margin: 7px;
+}
+
+.container {
+  margin: 10px;
+}
+
+input[type=text], input[type=email], input[type=date], input[type=number], input[type=password], select {
     width: 100%;
     padding: 10px 20px;
     margin: 8px 0;
@@ -151,6 +187,16 @@ input[type=text], input[type=date], input[type=number], select {
 
   .button-red button, .button-red:hover {
     background-color: #c93126;
+  }
+
+  .button-yellow button, .button-yellow {
+    background-color: khaki;
+    color: black !important;
+  }
+
+  .button-yellow button, .button-yellow:hover {
+    background-color: khaki;
+    color: black;
   }
 
   .button-gray button, .button-gray {
