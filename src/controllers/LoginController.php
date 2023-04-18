@@ -3,18 +3,80 @@ namespace src\controllers;
 
 use \core\Controller;
 use src\Handlers\LoginHandlers;
+use src\models\Empresas;
+use src\models\Socios;
 use src\models\Usuarios;
 
 class LoginController extends Controller {
 
     public function __construct() {
-        if (isset($_COOKIE['user'])) {
-            $this->redirect('');
-        }
+        
     }
 
     public function login() {
-        $this->render('login');
+        if (isset($_SESSION['usuario'])) {
+            $this->redirect('');
+        }
+
+        $dados = [];
+        if (!empty($_SESSION['notice'])) {
+            $dados['aviso'] = $_SESSION['notice'];
+            $_SESSION['notice'] = "";
+        }
+
+        $this->render('login', $dados);
+    }
+
+    public function cadastro() {
+        $dados = [];
+        if (!empty($_SESSION['notice'])) {
+            $dados['aviso'] = $_SESSION['notice'];
+            $_SESSION['notice'] = "";
+        }
+
+        $this->render('loginCadastro', $dados);
+    }
+
+    public function cadastroAction() {
+        $empresa['cnpj'] = filter_var($_POST['cnpj'], FILTER_DEFAULT);
+        $empresa['razao'] = filter_var($_POST['razao'], FILTER_DEFAULT);
+
+        if (!Empresas::verifyEmpresa($empresa['cnpj'])) {
+            $senha = filter_var($_POST['password'], FILTER_DEFAULT);
+            $senha2 = filter_var($_POST['password2'], FILTER_DEFAULT);
+            if ($senha == $senha2) {
+                $dados['senha'] = password_hash($senha, PASSWORD_DEFAULT);
+            } else {
+                $_SESSION['notice'] = "Senha incorreta!";
+                $this->redirect('/login/cadastro');
+            }
+            
+            $dados['nome'] = filter_var($_POST['nome'], FILTER_DEFAULT);
+            $dados['cpf'] = filter_var($_POST['cpf'], FILTER_DEFAULT);
+            $dados['zap'] = filter_var($_POST['zap'], FILTER_DEFAULT);
+            $dados['email'] = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
+            $dados['nivel_acesso'] = json_encode(['master']);
+
+            if (Usuarios::getUser($dados['cpf'])) {
+                $_SESSION['notice'] = "O CPF ". $dados['cpf']. " já está cadastrado!";
+                $this->redirect('/login/cadastro');
+            }
+            if (Usuarios::getUser($dados['email'])) {
+                $_SESSION['notice'] = "O e-mail ". $dados['email']. " já está cadastrado!";
+                $this->redirect('/login/cadastro');
+            }
+
+            $dados['id_empresa'] = Usuarios::addInfo('empresa', $empresa);
+
+            Usuarios::addInfo('usuarios', $dados, $dados['id_empresa']);
+
+            $_SESSION['notice'] = "Cadastro realizado com sucesso!";
+            $this->redirect('/login');
+        } else {
+            $_SESSION['notice'] = "O CNPJ ". $empresa['cnpj']. " já está cadastrado!";
+            $this->redirect('/login/cadastro');
+        }       
+        
     }
 
     public function loginAction() {

@@ -17,7 +17,7 @@ if (inputCEP) {
 }
 
 /********************************************************************************************************/
-// verifica se o cpf já estar cadastrado
+// verifica se o cpf já está cadastrado
 /********************************************************************************************************/
 if (cpf) {
     let header = document.querySelector('h1').innerHTML;

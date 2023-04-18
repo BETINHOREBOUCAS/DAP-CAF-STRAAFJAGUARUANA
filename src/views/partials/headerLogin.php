@@ -13,13 +13,3 @@
 </head>
 
 <body>
-
-    <div class="user">
-        <div>Usuário: <?= $_SESSION['usuario']['nome']; ?></div>
-        <div class="button-action button-navigation">
-            <button class="button-red" id="logof" url="<?=$base;?>/sair">Sair</button>
-            
-            <button class="button-blue" id="gerenciar" url="<?=$base;?>">Gerenciar</button>
-        </div>
-    </div>
-    <script src="<?=$base;?>/assets/js/button.js"></script>

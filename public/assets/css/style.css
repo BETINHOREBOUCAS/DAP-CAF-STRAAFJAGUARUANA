@@ -27,6 +27,24 @@ label {
   cursor: pointer;
 }
 
+.error {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.error img {
+  width: 500px;
+}
+
+.error .msg {
+  width: 500px;
+  font-size: 14pt;
+  font-weight: bolder;
+  text-align: center;
+}
 .user {
   position: absolute;
   right: 0;

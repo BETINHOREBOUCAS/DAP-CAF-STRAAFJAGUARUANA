@@ -22,6 +22,12 @@ class PropriedadeController extends Controller
             if ($_SESSION['usuario']['token'] != $user['token']) {
                 $this->redirect('/login');
             }
+            
+            if (in_array('master', json_decode($user['nivel_acesso'])) || in_array('caf', json_decode($user['nivel_acesso']))) {
+                
+            } else {
+                $this->redirect('/permissao');
+            }
         }
 
         $this->idEmpresa = $_SESSION['empresa']['id'];

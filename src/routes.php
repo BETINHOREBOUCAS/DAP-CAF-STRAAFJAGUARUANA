@@ -5,13 +5,18 @@ $router = new Router();
 
 $router->get('/login', 'LoginController@login');
 $router->post('/login', 'LoginController@loginAction');
+$router->get('/login/cadastro', 'LoginController@cadastro');
+$router->post('/login/cadastro', 'LoginController@cadastroAction');
 $router->get('/login/recuperar/senha', 'LoginController@recuperar');
 $router->post('/login/recuperar/senha', 'LoginController@recuperarAction');
 $router->get('/login/recuperar/senha/confirmar', 'LoginController@senhaConfirmar');
 $router->get('/sair', 'LoginController@logout');
 
-$router->get('/', 'HomeController@index');
+$router->get('/', 'GerenciarController@index');
+$router->get('/permissao', 'ErrorController@permissao');
 $router->post('/verify', 'HomeController@verifyCPF');
+
+$router->get('/caf', 'HomeController@index');
 
 $router->get('/propriedade/{idsocio}', 'PropriedadeController@index');
 $router->post('/propriedade/{idsocio}', 'PropriedadeController@cadastro');
@@ -41,7 +46,6 @@ $router->get('/declaracao/{iddoc}', 'DeclaracaoController@index');
 $router->get('/declaracao/separacao/{iddeclaracao}', 'DeclaracaoController@declaracaoSeparado');
 $router->post('/declaracao/separacao/{iddeclaracao}', 'DeclaracaoController@declaracaoSeparadoAction');
 
-$router->get('/gerenciar', 'GerenciarController@index');
 $router->get('/gerenciar/user', 'GerenciarController@user');
 $router->get('/gerenciar/add/user', 'GerenciarController@addUser');
 $router->post('/gerenciar/add/user', 'GerenciarController@addUserAction');

@@ -22,4 +22,8 @@ class ErrorController extends Controller {
         $this->render('404');
     }
 
+    public function permissao() {
+        $this->render('permissao');
+    }
+
 }

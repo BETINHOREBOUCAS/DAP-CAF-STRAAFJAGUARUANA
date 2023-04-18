@@ -11,13 +11,18 @@ class LoginHandlers {
         if ($usuario) {
             if (password_verify($password, $usuario['senha'])) { 
                 $hash = password_hash(time(), PASSWORD_DEFAULT);               
-                if (Usuarios::updateUser('usuarios', $hash, $usuario['id'])) {
+                if (Usuarios::updateToken('usuarios', $hash, $usuario['id'])) {
                     return $hash;
                 } else {
                     return false;
                 }
             }
         }
+    }
+
+    public static function createPassword($password) {
+        $teste = password_hash(123, PASSWORD_DEFAULT);
+        var_dump(password_verify('123', $teste));
     }
     
 }
