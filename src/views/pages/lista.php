@@ -88,7 +88,7 @@
                         <td style="width: 40%;"><?= $value['nome_membro']; ?></td>
                         <td style="width: 40%;"><?= $value['cpf_membro']; ?></td>
                         <td class="acoes" style="width: 20%;">
-                            <a href="<?= $base; ?>/?id=<?= $value['id_socio_responsavel']; ?>" title="Arquivos">Detalhar</a>
+                            <a href="<?= $base; ?>/caf?id=<?= $value['id_socio_responsavel']; ?>" title="Arquivos">Detalhar</a>
                         </td>
                     </tr>
                 <?php endforeach ?>

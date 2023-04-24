@@ -7,7 +7,7 @@
 
     <div class="ajust-button">
         <div class="button-navigation margin-rigth-5">
-            <a href="<?= $base; ?>/?id=<?= $id_responsavel; ?>">
+            <a href="<?= $base; ?>/caf?id=<?= $id_responsavel; ?>">
                 <div class="divButton button-red">Voltar</div>
             </a>
         </div>

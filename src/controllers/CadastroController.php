@@ -60,7 +60,7 @@ class CadastroController extends Controller
         if ($idRegistro) {
             FacilityHandlers::registrarAlteracao($dados, $idRegistro, 'cadastro_socio');
             $_SESSION['notice'] = "Sócio cadastrado com sucesso!";
-            $this->redirect('/');
+            $this->redirect('/cadastro');
         }
     }
 

@@ -136,7 +136,7 @@
 
         <div class="ajust-button">
             <div class="button-navigation">
-                <a href="<?= $base; ?>/?id=<?= $idsocio; ?>">
+                <a href="<?= $base; ?>/caf?id=<?= $idsocio; ?>">
                     <div class="divButton button-red">Voltar</div>
                 </a>
             </div>

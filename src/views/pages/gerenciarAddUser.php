@@ -1,15 +1,10 @@
 <?php $render('header'); ?>
-<pre>
- <?php
-    //print_r($viewData);
-?>   
-</pre>
 
 <div class="container">
     <form action="" method="post">
-    <?php if (isset($aviso) && !empty($aviso)) : ?>
-        <div class="sucess"><?= $aviso; ?></div>
-    <?php endif ?>
+        <?php if (isset($aviso) && !empty($aviso)) : ?>
+            <div class="sucess"><?= $aviso; ?></div>
+        <?php endif ?>
         <fieldset>
             <legend>
                 <h3>Dados do usuário</h3>
@@ -43,29 +38,31 @@
 
                 <div class="margin">
                     <label for="password">Senha:</label> <br>
-                    <input type="password" autocomplete="random-string" name="password" id="password" <?=!isset($usuario)?"required":"";?>> <br><br>
+                    <input type="password" autocomplete="random-string" name="password" id="password" <?= !isset($usuario) ? "required" : ""; ?>> <br><br>
                 </div>
 
                 <div class="margin">
                     <label for="password2">Confirmar senha:</label> <br>
-                    <input type="password" autocomplete="random-string" name="password2" id="password2" <?=!isset($usuario)?"required":"";?>> <br>
+                    <input type="password" autocomplete="random-string" name="password2" id="password2" <?= !isset($usuario) ? "required" : ""; ?>> <br>
                     <div class="verifyPassaword">Senhas não confere!</div>
                 </div>
 
             </div>
 
-            <div class="displayFlex">
-                <div class="margin">
-                    <div>
-                        <label>Nivel de Acesso</label>
-                    </div>
-                    <div>
-                        <div><input type="checkbox" name="nivel[]" <?= isset($usuario) && in_array('master', json_decode($usuario['nivel_acesso'])) ? 'checked' : ''; ?> value="master"> Master</div>
-                        <div><input type="checkbox" name="nivel[]" <?=isset($usuario) && in_array('previdencia', json_decode($usuario['nivel_acesso'])) ? 'checked' : ''; ?> value="previdencia"> Previdência</div>
-                        <div><input type="checkbox" name="nivel[]" <?=isset($usuario) && in_array('caf', json_decode($usuario['nivel_acesso'])) ? 'checked' : ''; ?> value="caf"> CAF</div>
+            <?php if (in_array('master', json_decode($access_system['nivel_acesso']))) : ?>
+                <div class="displayFlex">
+                    <div class="margin">
+                        <div>
+                            <label>Nivel de Acesso</label>
+                        </div>
+                        <div>
+                            <div><input type="checkbox" name="nivel[]" <?= isset($usuario) && in_array('master', json_decode($usuario['nivel_acesso'])) ? 'checked' : ''; ?> value="master"> Master</div>
+                            <div><input type="checkbox" name="nivel[]" <?= isset($usuario) && in_array('previdencia', json_decode($usuario['nivel_acesso'])) ? 'checked' : ''; ?> value="previdencia"> Previdência</div>
+                            <div><input type="checkbox" name="nivel[]" <?= isset($usuario) && in_array('caf', json_decode($usuario['nivel_acesso'])) ? 'checked' : ''; ?> value="caf"> CAF</div>
+                        </div>
                     </div>
                 </div>
-            </div>
+            <?php endif ?>
 
         </fieldset>
 

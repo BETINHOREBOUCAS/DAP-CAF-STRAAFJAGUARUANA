@@ -201,7 +201,7 @@
 
         <div class="ajust-button">
             <div class="button-navigation">
-                <a href="<?= $base; ?>/?id=<?= $socios[0]['id']; ?>">
+                <a href="<?= $base; ?>/caf?id=<?= $socios[0]['id']; ?>">
                     <div class="divButton button-red">Voltar</div>
                 </a>
             </div>

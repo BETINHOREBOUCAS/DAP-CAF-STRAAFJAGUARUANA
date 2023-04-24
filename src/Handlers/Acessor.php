@@ -42,13 +42,23 @@ class Acessor
 
             }
             
-            $dados['valoresCategoria'] = [
+            if ($valUrbana < 1) {
+                $dados['valoresCategoria'] = [
+                'lista' => $lista,
+                'valProgramasSociais' => $valProgramasSociais,
+                'valUrbano' => $valUrbana,
+                'valRural' => $valRural,
+                'porcentagem' => 100
+                ];
+            } else {
+                $dados['valoresCategoria'] = [
                 'lista' => $lista,
                 'valProgramasSociais' => $valProgramasSociais,
                 'valUrbano' => $valUrbana,
                 'valRural' => $valRural,
                 'porcentagem' => ($valRural / $valUrbana) * 100
             ];
+            }           
 
             return $dados;
         } else {

@@ -94,6 +94,7 @@ class GerenciarController extends Controller {
         }
 
         $idUser = $args['iduser'];
+        $dados['access_system'] = $this->usuario;
         $dados['usuario'] = Usuarios::getUser($idUser);
         
         $this->render('gerenciarAddUser', $dados);
