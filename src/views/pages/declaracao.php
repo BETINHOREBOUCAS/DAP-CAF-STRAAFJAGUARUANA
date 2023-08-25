@@ -498,7 +498,7 @@ ob_start();
     <h4><u>II – DAS CLÁUSULAS DO CONTRATO</u></h4>
 
     <strong><strong>Cláusula 1ª</strong>.</strong> O presente instrumento tem como OBJETO, o imóvel constituído em <?= mb_convert_case($propriedade[0]['propriedade'], MB_CASE_TITLE); ?>, de propriedade
-    do PARCEIRO-OUTORGANTE, qualificado neste contrato, tem área total de <?= $propriedade[0]['propriedade']; ?> ha, está localizada em <?= mb_convert_case($propriedade[0]['denominacao'], MB_CASE_TITLE); ?>, <?= mb_convert_case($propriedade[0]['bairroPropriedade'], MB_CASE_LOWER); ?>, município de <?= mb_convert_case($propriedade[0]['municipio_proprietario'], MB_CASE_TITLE); ?>, estado do <?= mb_convert_case($propriedade[0]['uf_proprietario'], MB_CASE_TITLE); ?>; está
+    do PARCEIRO-OUTORGANTE, qualificado neste contrato, tem área total de <?= $propriedade[0]['areaTotal']; ?> ha, está localizada em <?= mb_convert_case($propriedade[0]['denominacao'], MB_CASE_TITLE); ?>, <?= mb_convert_case($propriedade[0]['bairroPropriedade'], MB_CASE_LOWER); ?>, município de <?= mb_convert_case($propriedade[0]['municipio_proprietario'], MB_CASE_TITLE); ?>, estado do <?= mb_convert_case($propriedade[0]['uf_proprietario'], MB_CASE_TITLE); ?>; está
     devidamente cadastrado no ITR/INCRA, sob N° <?= $propriedade[0]['registro']; ?>.
 
     <br><br>
