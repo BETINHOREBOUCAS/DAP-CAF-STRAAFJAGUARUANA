@@ -208,7 +208,7 @@
 
         <div class="ajust-button">
             <div class="button-navigation">
-                <a href="<?= $base; ?>/caf">
+                <a href="<?= $base; ?>">
                     <div class="divButton button-red">Voltar</div>
                 </a>
             </div>

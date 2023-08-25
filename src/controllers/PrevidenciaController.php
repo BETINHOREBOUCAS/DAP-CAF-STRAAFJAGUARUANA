@@ -3,11 +3,9 @@ namespace src\controllers;
 
 use \core\Controller;
 use src\Handlers\FacilityHandlers;
-use src\models\Membros;
-use src\models\Socios;
 use src\models\Usuarios;
 
-class HomeController extends Controller {
+class PrevidenciaController extends Controller {
 
     public $idEmpresa;
 
@@ -20,38 +18,20 @@ class HomeController extends Controller {
             if ($_SESSION['usuario']['token'] != $user['token']) {
                 $this->redirect('/login');
             }
-
+            
             if (in_array('master', json_decode($user['nivel_acesso'])) || in_array('caf', json_decode($user['nivel_acesso']))) {
                 
             } else {
                 $this->redirect('/permissao');
             }
         }
-        
+
         $this->idEmpresa = $_SESSION['empresa']['id'];
     }
 
     public function index() {
-
-        $dados = FacilityHandlers::openListGET($_GET, $this->idEmpresa);        
-
-        $this->render('lista', $dados);
-    }
-
-    public function verifyCPF() {
-        $cpf = $_POST['cpf'];
-        $socios = Socios::find('', $cpf, $this->idEmpresa);
-        if ($socios) {
-            $cpf_verify['cpf_verify'] = $socios[0]['cpf_socio'];
-        } else {
-            $membros = Membros::findMembro($cpf, $this->idEmpresa);
-            if ($membros) {
-                $cpf_verify['cpf_verify'] = $membros[0]['cpf_membro'];
-            } else {
-                $cpf_verify['cpf_verify'] = 0;
-            }
-        }       
-        echo json_encode($cpf_verify);
+        $dados = FacilityHandlers::openListGET($_GET, $this->idEmpresa); 
+        $this->render('previdenciaLista', $dados);
     }
 
 }

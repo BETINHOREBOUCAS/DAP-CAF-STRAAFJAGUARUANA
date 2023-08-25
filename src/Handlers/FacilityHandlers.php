@@ -2,6 +2,7 @@
 
 namespace src\Handlers;
 
+use src\models\Membros;
 use src\models\Socios;
 
 class FacilityHandlers {
@@ -28,6 +29,29 @@ class FacilityHandlers {
             }
         }
         return $dadosAlterados;
+    }
+
+    public static function openListGET($get, $idEmpresa) {
+        $dados = [];
+        if (!empty($_SESSION['notice'])) {
+            $dados['aviso'] = $_SESSION['notice'];
+            $_SESSION['notice'] = "";
+        }
+
+        if (isset($get['nome']) && !empty($get['nome']) || isset($get['cpf']) && !empty($get['cpf']) || isset($get['id']) && !empty($get['id'])) {
+            $nome = filter_input(INPUT_GET, 'nome', FILTER_DEFAULT);
+            $cpf = filter_input(INPUT_GET, 'cpf', FILTER_DEFAULT);
+            $id = filter_input(INPUT_GET, 'id', FILTER_DEFAULT);
+            $dados['socios'] = Socios::find($nome, $cpf, $idEmpresa, $id);
+        }
+
+        if (isset($get['nomeMembro']) && !empty($get['nomeMembro']) || isset($get['cpfMembro']) && !empty($get['cpfMembro'])) {
+            $nomeMembro = filter_input(INPUT_GET, 'nomeMembro', FILTER_DEFAULT);
+            $cpfMembro = filter_input(INPUT_GET, 'cpfMembro', FILTER_DEFAULT);            
+            $dados['membros'] = Membros::findMembroThu($nomeMembro, $idEmpresa, $cpfMembro);
+        }
+
+        return $dados;
     }
     
 }

@@ -51,3 +51,5 @@ $router->get('/gerenciar/add/user', 'GerenciarController@addUser');
 $router->post('/gerenciar/add/user', 'GerenciarController@addUserAction');
 $router->get('/gerenciar/user/edit/{iduser}', 'GerenciarController@editUser');
 $router->post('/gerenciar/user/edit/{iduser}', 'GerenciarController@editUserAction');
+
+$router->get('/previdencia', 'PrevidenciaController@index');

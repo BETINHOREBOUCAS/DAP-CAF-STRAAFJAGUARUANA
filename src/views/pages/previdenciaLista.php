@@ -7,9 +7,7 @@
         <div class="sucess"><?= $aviso; ?></div>
     <?php endif ?>
     <form action="" method="get">
-        <div class="displayFlex search-home">
-
-            <div class="search-socio">
+        <div class="displayFlex search-home">           
 
                 <div class="margin">
                     <label for="Nome">Nome do sócio</label><br>
@@ -21,20 +19,6 @@
                     <input type="text" autocomplete="off" name="cpf" id="inputCPF" placeholder="___.___.___-___">
                 </div>
 
-            </div>
-
-            <div class="search-membro">
-
-                <div class="margin">
-                    <label for="nomeMembro">Nome do membro</label><br>
-                    <input type="text" autocomplete="off" name="nomeMembro" id="nomeMembro">
-                </div>
-
-                <div class="margin">
-                    <label for="cpfMembro">CPF do membro</label><br>
-                    <input type="text" autocomplete="off" name="cpfMembro" id="inputCPF2" placeholder="___.___.___-___">
-                </div>
-            </div>
         </div>
         <div class="ajust-button">
             <div class="button-navigation button-center button-green" style="border-radius: 5px">
@@ -58,7 +42,6 @@
                         <td style="width: 15%;"><?= $value['cpf_socio']; ?></td>
                         <td class="acoes" style="width: 20%;">
                             <a href="<?= $base; ?>/arquivo/<?= $value['id']; ?>" title="Arquivos"><i class="fa-solid fa-folder-open"></i></a> |
-                            <a href="<?= $base; ?>/renda/<?= $value['id']; ?>" title="Renda"><i class="fa-solid fa-file-invoice-dollar"></i></a> |
                             <a href="<?= $base; ?>/propriedade/<?= $value['id']; ?>" title="Propriedade"><i class="fa-solid fa-tractor"></i></a> |
                             <a href="<?= $base; ?>/lista/membros/<?= $value['id']; ?>" title="Menbros da Família"><i class="fa-solid fa-people-roof"></i></a> |
                             <a href="<?= $base; ?>/cadastro/editar/<?= $value['id']; ?>" title="Editar Cadastro"><i class="fa-solid fa-user-pen"></i></a>
